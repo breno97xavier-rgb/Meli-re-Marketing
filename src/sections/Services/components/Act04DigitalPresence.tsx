@@ -6,8 +6,8 @@ interface Act04DigitalPresenceProps {
 }
 
 const mockups = [
-  'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Site/Screenshots/1.png',
-  'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Site/Screenshots/2.png',
+  'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Logos/1.png',
+  'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Logos/2.png',
 ];
 
 /**
@@ -24,13 +24,13 @@ export const Act04DigitalPresence: React.FC<Act04DigitalPresenceProps> = () => {
 
   const slides = mockups.map((mockupUrl, idx) => (
     <div key={mockupUrl} className="w-full flex items-center justify-center p-0 sm:p-1">
-      <div className="w-full max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[920px] 2xl:max-w-[1000px] flex items-center justify-center">
+      <div className="w-full max-w-[640px] md:max-w-[760px] lg:max-w-[900px] xl:max-w-[1060px] 2xl:max-w-[1180px] flex items-center justify-center">
         <img
           src={mockupUrl}
           alt={`Mockup Presença Digital 0${idx + 1}`}
           loading="lazy"
           decoding="async"
-          className="w-full h-auto max-h-[48vh] md:max-h-[52vh] lg:max-h-[55vh] xl:max-h-[58vh] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition-transform duration-700 hover:scale-[1.02]"
+          className="w-full h-auto max-h-[52vh] md:max-h-[58vh] lg:max-h-[62vh] xl:max-h-[66vh] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.75)] transition-transform duration-700 hover:scale-[1.02]"
         />
       </div>
     </div>
@@ -68,7 +68,7 @@ export const Act04DigitalPresence: React.FC<Act04DigitalPresenceProps> = () => {
 
         {/* Right Column: Prominent Auto-Scrolling Mockups Carousel */}
         <div className="lg:col-span-8 xl:col-span-8 flex items-center justify-center lg:justify-end">
-          <div className="w-full max-w-[860px] xl:max-w-[960px]">
+          <div className="w-full max-w-full lg:max-w-[940px] xl:max-w-[1080px]">
             <ServiceAssetCarousel
               items={slides}
               autoplayInterval={4500}
