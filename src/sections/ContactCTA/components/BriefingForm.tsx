@@ -48,7 +48,7 @@ const INITIAL_FORM_DATA: BriefingFormData = {
   preferred_contact: 'whatsapp',
 };
 
-const SUBMIT_ENDPOINT = 'https://ycagvwsvccgdjzpbhhfi.supabase.co/functions/v1/submit-lead';
+const SUBMIT_ENDPOINT = 'https://ycagvwsvccgdjzpbhrfi.supabase.co/functions/v1/submit-lead';
 
 export const BriefingForm: React.FC = () => {
   const [formData, setFormData] = useState<BriefingFormData>(INITIAL_FORM_DATA);

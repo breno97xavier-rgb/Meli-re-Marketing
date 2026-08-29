@@ -2,6 +2,7 @@ import React from 'react';
 import { AtmosphereProvider } from './context/AtmosphereContext';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
+import { FloatingContactCTA } from './components/ui/FloatingContactCTA';
 import { HeroIntroExperience } from './sections/HeroIntro/HeroIntroExperience';
 import { ServicesSection } from './sections/Services/ServicesSection';
 import { EditorialInterludeSection } from './sections/EditorialInterlude/EditorialInterludeSection';
@@ -44,6 +45,9 @@ export default function App() {
           {/* 09. Contact CTA */}
           <ContactCTASection />
         </main>
+
+        {/* Floating Global Contact CTA */}
+        <FloatingContactCTA />
 
         {/* Global Footer */}
         <Footer />
