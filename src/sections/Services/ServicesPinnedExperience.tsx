@@ -283,10 +283,10 @@ export const ServicesPinnedExperience: React.FC = () => {
         {/* Primary Fixed Stage */}
         <div
           ref={stageRef}
-          className="w-full h-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-24 pb-10 flex flex-col justify-between relative z-10"
+          className="w-full h-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-16 md:pt-16 lg:pt-18 xl:pt-20 pb-4 lg:pb-6 flex flex-col justify-between relative z-10"
         >
           {/* Top Control Bar: Eyebrow */}
-          <div className="flex items-center justify-between pb-3 border-b border-brand-light/10">
+          <div className="flex items-center justify-between pb-2.5 mb-1 lg:mb-2 border-b border-brand-light/10">
             <SectionEyebrow variant="coral">SERVIÇOS</SectionEyebrow>
           </div>
 
