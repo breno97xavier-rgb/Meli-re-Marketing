@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-coral: #F15A3C;
+  --color-brand-light: #EDEEEE;
+  --color-brand-dark: #1D1D1D;
+  
+  --font-sans: 'Alexandria', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-alexandria: 'Alexandria', sans-serif;
+}
+
+:root {
+  --brand-coral: #F15A3C;
+  --brand-light: #EDEEEE;
+  --brand-dark: #1D1D1D;
+}
+
+@layer base {
+  * {
+    border-color: rgba(237, 238, 238, 0.12);
+  }
+  
+  html {
+    font-family: 'Alexandria', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #1D1D1D;
+    color: #EDEEEE;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #1D1D1D;
+    color: #EDEEEE;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #F15A3C;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion preference handling */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
