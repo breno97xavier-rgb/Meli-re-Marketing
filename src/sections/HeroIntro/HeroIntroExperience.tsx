@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap, ScrollTrigger } from '../../lib/gsap';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useAtmosphere } from '../../context/AtmosphereContext';
@@ -22,6 +23,7 @@ import { assets } from '../../config/assets';
  * 8. (0.94 → 1.00): INTRODUÇÃO ESTABELECIDA + HEADER FIXO
  */
 export const HeroIntroExperience: React.FC = () => {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const heroStageRef = useRef<HTMLDivElement | null>(null);
   const introStageRef = useRef<HTMLDivElement | null>(null);
@@ -286,7 +288,12 @@ export const HeroIntroExperience: React.FC = () => {
               <p className="text-base sm:text-lg text-brand-light/80 font-light leading-relaxed max-w-2xl">
                 Estruturação, estratégia, conteúdo, tráfego e presença digital construídos com direção, acompanhamento e consistência.
               </p>
-              <Button href="#contato" variant="primary" size="lg">
+              <Button
+                href="/briefing"
+                onClick={() => navigate('/briefing')}
+                variant="primary"
+                size="lg"
+              >
                 <span>Fale sobre seu negócio</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
@@ -365,7 +372,7 @@ export const HeroIntroExperience: React.FC = () => {
       <section
         id="home"
         ref={heroStageRef}
-        className="absolute inset-0 z-20 w-full h-full flex flex-col justify-between px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-7 pb-8 overflow-hidden pointer-events-none"
+        className="absolute inset-0 z-20 w-full h-full flex flex-col justify-between px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20 pt-7 pb-8 overflow-hidden"
         aria-label="Hero Melière Marketing"
       >
         {/* Subtle Background Architectural Grid Lines */}
@@ -374,13 +381,13 @@ export const HeroIntroExperience: React.FC = () => {
         </div>
 
         {/* TOP LAYER (z-30): Subtle Brand Eyebrow Identification */}
-        <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto flex items-center justify-between relative z-30 pt-1 pointer-events-auto">
-          <div ref={heroEyebrowRef}>
+        <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto flex items-center justify-between relative z-30 pt-1 pointer-events-none">
+          <div ref={heroEyebrowRef} className="pointer-events-auto">
             <SectionEyebrow variant="coral">ESTRUTURAÇÃO DE MARKETING</SectionEyebrow>
           </div>
           
           {/* Subtle Ambient Identification */}
-          <div ref={heroAmbientTagRef} className="hidden sm:flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-brand-light/50 font-medium">
+          <div ref={heroAmbientTagRef} className="hidden sm:flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-brand-light/50 font-medium pointer-events-auto">
             <span>PRESENÇA DIGITAL</span>
             <span className="w-1.5 h-1.5 rounded-full bg-brand-coral" />
             <span>ESTRATÉGIA</span>
@@ -446,11 +453,12 @@ export const HeroIntroExperience: React.FC = () => {
 
               <div ref={heroCtaRef} className="pointer-events-auto">
                 <Button
-                  href="#contato"
+                  href="/briefing"
+                  onClick={() => navigate('/briefing')}
                   variant="primary"
                   size="md"
                   id="hero-cta-button"
-                  className="group relative overflow-hidden transition-all duration-300 shadow-md"
+                  className="group relative overflow-hidden transition-all duration-300 shadow-md cursor-pointer"
                 >
                   <span>Fale sobre seu negócio</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -486,7 +494,7 @@ export const HeroIntroExperience: React.FC = () => {
             <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto h-full border-x border-brand-dark/20" />
           </div>
 
-          <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto flex flex-col justify-between h-full relative z-10 pointer-events-auto">
+          <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto flex flex-col justify-between h-full relative z-10">
             {/* Top Bar: Eyebrow + Inherited Brand Symbol Memory */}
             <div className="flex items-center justify-between mb-6 sm:mb-8">
               <div ref={introEyebrowRef}>

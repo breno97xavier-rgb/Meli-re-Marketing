@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAtmosphere } from '../../context/AtmosphereContext';
 import { ArrowUpRight } from 'lucide-react';
 
 export const FloatingContactCTA: React.FC = () => {
+  const navigate = useNavigate();
   const { headerVisible } = useAtmosphere();
   const [isHeroPassed, setIsHeroPassed] = useState<boolean>(false);
   const [isContactVisible, setIsContactVisible] = useState<boolean>(false);
@@ -74,7 +76,6 @@ export const FloatingContactCTA: React.FC = () => {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            // When contact section enters significantly
             setIsContactVisible(entry.isIntersecting);
           });
         },
@@ -98,12 +99,10 @@ export const FloatingContactCTA: React.FC = () => {
   // Determine if CTA should be visible
   const isVisible = isHeroPassed && !isContactVisible;
 
-  const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleNavigateBriefing = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const contactElem = document.getElementById('contato');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/briefing');
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
@@ -117,8 +116,8 @@ export const FloatingContactCTA: React.FC = () => {
       <button
         id="floating-contact-cta"
         type="button"
-        onClick={scrollToContact}
-        aria-label="Ir para seção de contato e falar conosco"
+        onClick={handleNavigateBriefing}
+        aria-label="Ir para a página de briefing e falar conosco"
         className="group relative inline-flex items-center justify-center gap-2 sm:gap-2.5 px-4 py-3 sm:px-5 sm:py-3.5 md:px-6 md:py-3.5 min-h-[44px] min-w-[44px] bg-brand-coral text-white font-medium text-xs sm:text-[13px] uppercase tracking-wider select-none cursor-pointer shadow-[0_8px_24px_rgba(238,77,45,0.35)] hover:shadow-[0_12px_32px_rgba(238,77,45,0.5)] hover:bg-[#de492c] active:bg-[#c93d22] active:scale-[0.98] border border-white/15 focus-visible:outline-2 focus-visible:outline-brand-coral focus-visible:outline-offset-2 transition-all duration-200"
       >
         <span>Fale conosco</span>

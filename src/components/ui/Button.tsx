@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -17,6 +18,8 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   ...props
 }) => {
+  const navigate = useNavigate();
+
   const baseClasses =
     'inline-flex items-center justify-center font-medium tracking-wider uppercase transition-all duration-200 cursor-pointer select-none whitespace-nowrap focus-visible:outline-2 focus-visible:outline-brand-coral focus-visible:outline-offset-2';
 
@@ -42,8 +45,9 @@ export const Button: React.FC<ButtonProps> = ({
   if (href) {
     const isAnchor = href.startsWith('#');
     const isExternal = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+    const isInternalRoute = href.startsWith('/') && !isExternal;
 
-    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (isAnchor) {
         e.preventDefault();
         const targetId = href.replace('#', '');
@@ -51,7 +55,12 @@ export const Button: React.FC<ButtonProps> = ({
         if (elem) {
           elem.scrollIntoView({ behavior: 'smooth' });
         }
+      } else if (isInternalRoute) {
+        e.preventDefault();
+        navigate(href);
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
+
       if (onClick) {
         onClick(e as unknown as React.MouseEvent<HTMLButtonElement>);
       }
@@ -61,7 +70,7 @@ export const Button: React.FC<ButtonProps> = ({
       <a
         id={id}
         href={href}
-        onClick={handleAnchorClick}
+        onClick={handleClick}
         target={isExternal && !href.startsWith('mailto:') ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         className={combinedClasses}

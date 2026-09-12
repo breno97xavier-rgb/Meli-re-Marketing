@@ -33,5 +33,5 @@ export type SectionId = typeof allSectionIds[number];
 
 export const ctaConfig = {
   label: 'Fale sobre seu negócio',
-  targetAnchor: '#contato',
+  targetAnchor: '/briefing',
 };
