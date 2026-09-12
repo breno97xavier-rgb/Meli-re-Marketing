@@ -12,6 +12,10 @@ import {
 } from '../types/briefing';
 import { captureUtmParams, getStoredUtmParams } from '../lib/utm';
 import {
+  mapBriefingStateToPayload,
+  submitBriefingLead,
+} from '../lib/briefingContracts';
+import {
   ArrowLeft,
   ArrowRight,
   Check,
@@ -31,6 +35,11 @@ export const BriefingPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
   const [formData, setFormData] = useState<BriefingState>(INITIAL_BRIEFING_STATE);
+
+  // Submission lifecycle states
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [submittedLeadId, setSubmittedLeadId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Load UTMs on mount and restore any existing session UTMs
   useEffect(() => {
@@ -62,6 +71,32 @@ export const BriefingPage: React.FC = () => {
     setDirection(-1);
     setCurrentStep((prev) => Math.max(prev - 1, 0));
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Submit Briefing Lead to Supabase Endpoint
+  const handleSubmitBriefing = async () => {
+    if (submitStatus === 'submitting' || submitStatus === 'success') return;
+    if (!isStepValid()) return;
+
+    setSubmitStatus('submitting');
+    setErrorMessage(null);
+
+    const payload = mapBriefingStateToPayload(formData);
+    const res = await submitBriefingLead(payload);
+
+    if (res.success && res.lead_id) {
+      setSubmittedLeadId(res.lead_id);
+      setSubmitStatus('success');
+      setDirection(1);
+      setCurrentStep(6);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setSubmitStatus('error');
+      setErrorMessage(
+        res.error ||
+          'Não conseguimos enviar agora. Suas respostas foram preservadas. Tente novamente em alguns instantes.'
+      );
+    }
   };
 
   // Step 0: Lead Profile
@@ -930,6 +965,25 @@ export const BriefingPage: React.FC = () => {
                         />
                       </div>
                     )}
+
+                    {/* Submission Error Banner */}
+                    {submitStatus === 'error' && (
+                      <div className="p-4 bg-red-950/30 border border-red-500/40 text-red-200 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-2">
+                        <div>
+                          <p className="font-semibold text-red-100">Não conseguimos enviar agora.</p>
+                          <p className="text-xs text-red-300 font-light mt-0.5">
+                            {errorMessage || 'Suas respostas foram preservadas. Tente novamente em alguns instantes.'}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleSubmitBriefing}
+                          className="px-3.5 py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-mono uppercase tracking-wider transition-colors shrink-0 cursor-pointer font-medium"
+                        >
+                          Tentar novamente
+                        </button>
+                      </div>
+                    )}
                   </motion.div>
                 )}
               </motion.div>
@@ -1034,15 +1088,12 @@ export const BriefingPage: React.FC = () => {
                   </Button>
 
                   <Button
-                    onClick={() => {
-                      setDirection(-1);
-                      setCurrentStep(0);
-                    }}
+                    onClick={() => navigate('/#servicos')}
                     variant="outline"
                     size="lg"
                     className="w-full sm:w-auto"
                   >
-                    <span>Revisar respostas</span>
+                    <span>Conhecer nossos serviços</span>
                   </Button>
                 </div>
               </motion.div>
@@ -1057,25 +1108,54 @@ export const BriefingPage: React.FC = () => {
             <button
               type="button"
               onClick={prevStep}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-3 px-2 cursor-pointer"
+              disabled={submitStatus === 'submitting'}
+              className={`inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-3 px-2 ${
+                submitStatus === 'submitting' ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
+              }`}
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Voltar</span>
             </button>
 
             {/* Continue / Finish Button */}
-            <Button
-              onClick={nextStep}
-              disabled={!isStepValid()}
-              variant="primary"
-              size="md"
-              className={`gap-2.5 shadow-md ${
-                !isStepValid() ? 'opacity-40 cursor-not-allowed' : ''
-              }`}
-            >
-              <span>{currentStep === 5 ? 'Concluir Briefing' : 'Continuar'}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Button>
+            {currentStep === 5 ? (
+              <Button
+                onClick={handleSubmitBriefing}
+                disabled={!isStepValid() || submitStatus === 'submitting'}
+                variant="primary"
+                size="md"
+                className={`gap-2.5 shadow-md ${
+                  !isStepValid() || submitStatus === 'submitting'
+                    ? 'opacity-50 cursor-not-allowed'
+                    : ''
+                }`}
+              >
+                {submitStatus === 'submitting' ? (
+                  <>
+                    <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Enviando...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Concluir Briefing</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
+              </Button>
+            ) : (
+              <Button
+                onClick={nextStep}
+                disabled={!isStepValid()}
+                variant="primary"
+                size="md"
+                className={`gap-2.5 shadow-md ${
+                  !isStepValid() ? 'opacity-40 cursor-not-allowed' : ''
+                }`}
+              >
+                <span>Continuar</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            )}
           </div>
         )}
       </main>

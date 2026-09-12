@@ -200,3 +200,179 @@ export function generateExecutiveMessage(data: {
 
   return summary;
 }
+
+export interface BriefingSubmissionPayload {
+  lead_type: 'business' | 'self_employed';
+  services_interest: string[];
+  current_situation: string[];
+  objectives: string[];
+  business_name?: string;
+  professional_name?: string;
+  segment_or_profession: string;
+  website_or_instagram?: string;
+  notes?: string;
+  preferred_contact: 'whatsapp' | 'phone' | 'email';
+  contact_name: string;
+  phone?: string;
+  email?: string;
+  preferred_call_period?: 'morning' | 'afternoon';
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  referrer?: string;
+  landing_url?: string;
+}
+
+export const SUBMIT_LEAD_ENDPOINT = 'https://ycagvwsvccgdjzpbhrfi.supabase.co/functions/v1/submit-lead';
+
+export function mapUiServiceToCanonical(val: string): CanonicalService {
+  if (CANONICAL_SERVICES.includes(val as CanonicalService)) {
+    return val as CanonicalService;
+  }
+  const lower = val.toLowerCase();
+  if (lower.includes('conteúdo') || lower.includes('redes') || lower.includes('social')) return 'social_media';
+  if (lower.includes('tráfego') || lower.includes('aquisição') || lower.includes('traffic')) return 'paid_traffic';
+  if (lower.includes('site') || lower.includes('portfólio') || lower.includes('portfolio') || lower.includes('website')) return 'website_portfolio';
+  if (lower.includes('marca') || lower.includes('posicionamento') || lower.includes('branding')) return 'branding_positioning';
+  if (lower.includes('completa') || lower.includes('estratégia') || lower.includes('full')) return 'full_strategy';
+  return 'not_sure';
+}
+
+export function mapUiSituationToCanonical(val: string): CanonicalSituation {
+  if (CANONICAL_SITUATIONS.includes(val as CanonicalSituation)) {
+    return val as CanonicalSituation;
+  }
+  const lower = val.toLowerCase();
+  if (lower.includes('não') && (lower.includes('estruturado') || lower.includes('comecei') || lower.includes('nada'))) return 'not_started';
+  if (lower.includes('internamente') || lower.includes('sozinho') || lower.includes('in_house')) return 'in_house';
+  if (lower.includes('agência') || lower.includes('já trabalho com') || lower.includes('já trabalhamos')) {
+    if (lower.includes('anteriormente') || lower.includes('passado')) return 'past_experience';
+    return 'active_agency_or_freelancer';
+  }
+  if (lower.includes('anteriormente')) return 'past_experience';
+  if (lower.includes('melhorar') || lower.includes('tentamos antes') || lower.includes('tentei antes')) return 'wants_improvement';
+  if (lower.includes('avaliando') || lower.includes('possibilidades')) return 'evaluating_options';
+  return 'not_started';
+}
+
+export function mapUiObjectiveToCanonical(val: string): CanonicalObjective {
+  if (CANONICAL_OBJECTIVES.includes(val as CanonicalObjective)) {
+    return val as CanonicalObjective;
+  }
+  const lower = val.toLowerCase();
+  if (lower.includes('atrair') || lower.includes('clientes')) return 'attract_clients';
+  if (lower.includes('percepção') || lower.includes('autoridade') || lower.includes('profissionalismo')) return 'brand_perception';
+  if (lower.includes('organizar') || lower.includes('comunicação')) return 'organize_communication';
+  if (lower.includes('conversão') || lower.includes('vendas')) return 'increase_conversion';
+  if (lower.includes('posicionar') || lower.includes('trabalho') || lower.includes('reposicionamento')) return 'repositioning';
+  if (lower.includes('lançar') || lower.includes('reformular') || lower.includes('rebrand')) return 'launch_or_rebrand';
+  return 'other';
+}
+
+export function mapBriefingStateToPayload(state: {
+  leadType: 'business' | 'self_employed' | null;
+  servicesInterest: string[];
+  currentSituation: string[];
+  objectives: string[];
+  otherObjective?: string;
+  businessName?: string;
+  professionalName?: string;
+  segmentOrProfession: string;
+  websiteOrInstagram?: string;
+  notes?: string;
+  preferredContact: 'whatsapp' | 'phone' | 'email' | null;
+  contactName: string;
+  phone?: string;
+  email?: string;
+  preferredCallPeriod?: 'morning' | 'afternoon';
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  referrer?: string;
+}): BriefingSubmissionPayload {
+  const canonicalServices = state.servicesInterest.map(mapUiServiceToCanonical);
+  const canonicalSituations = state.currentSituation.map(mapUiSituationToCanonical);
+  const canonicalObjectives = state.objectives.map(mapUiObjectiveToCanonical);
+
+  let combinedNotes = (state.notes || '').trim();
+  if (state.objectives.includes('Outro') && state.otherObjective && state.otherObjective.trim()) {
+    const customObjNote = `[Objetivo específico]: ${state.otherObjective.trim()}`;
+    combinedNotes = combinedNotes ? `${combinedNotes}\n\n${customObjNote}` : customObjNote;
+  }
+
+  const payload: BriefingSubmissionPayload = {
+    lead_type: state.leadType || 'business',
+    services_interest: canonicalServices,
+    current_situation: canonicalSituations,
+    objectives: canonicalObjectives,
+    business_name: state.leadType === 'business' ? (state.businessName || '').trim() || undefined : undefined,
+    professional_name: state.leadType === 'self_employed' ? (state.professionalName || '').trim() || undefined : undefined,
+    segment_or_profession: (state.segmentOrProfession || '').trim(),
+    website_or_instagram: (state.websiteOrInstagram || '').trim() || undefined,
+    notes: combinedNotes || undefined,
+    preferred_contact: state.preferredContact || 'whatsapp',
+    contact_name: (state.contactName || '').trim(),
+    phone: (state.phone || '').trim() || undefined,
+    email: (state.email || '').trim() || undefined,
+    preferred_call_period: state.preferredContact === 'phone' ? state.preferredCallPeriod : undefined,
+    utm_source: state.utm_source || undefined,
+    utm_medium: state.utm_medium || undefined,
+    utm_campaign: state.utm_campaign || undefined,
+    utm_content: state.utm_content || undefined,
+    utm_term: state.utm_term || undefined,
+    referrer: state.referrer || (typeof document !== 'undefined' && document.referrer ? document.referrer : undefined),
+    landing_url: typeof window !== 'undefined' ? window.location.href : undefined,
+  };
+
+  return payload;
+}
+
+export async function submitBriefingLead(payload: BriefingSubmissionPayload): Promise<{
+  success: boolean;
+  lead_id?: string;
+  error?: string;
+}> {
+  try {
+    const res = await fetch(SUBMIT_LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+      const errorMessage =
+        (data && typeof data.error === 'string' && data.error) ||
+        'Não foi possível concluir o envio no momento. Suas respostas foram salvas.';
+      return {
+        success: false,
+        error: errorMessage,
+      };
+    }
+
+    if (data && data.success && data.lead_id) {
+      return {
+        success: true,
+        lead_id: data.lead_id,
+      };
+    }
+
+    return {
+      success: true,
+      lead_id: data?.lead_id || undefined,
+    };
+  } catch (networkError) {
+    console.error('[submitBriefingLead] Network error:', networkError);
+    return {
+      success: false,
+      error: 'Não conseguimos enviar agora. Suas respostas foram preservadas. Tente novamente em alguns instantes.',
+    };
+  }
+}

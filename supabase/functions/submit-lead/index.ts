@@ -473,14 +473,28 @@ serve(async (req: Request) => {
     };
 
     if (isLegacy) {
+      // Map legacy service to canonical service
+      let canonicalService: CanonicalService = 'not_sure';
+      if (rawBody.service === 'social_media') canonicalService = 'social_media';
+      else if (rawBody.service === 'paid_traffic') canonicalService = 'paid_traffic';
+      else if (rawBody.service === 'website') canonicalService = 'website_portfolio';
+      else if (rawBody.service === 'branding') canonicalService = 'branding_positioning';
+
+      // Map legacy stage to canonical situation
+      let canonicalSituation: CanonicalSituation = 'in_house';
+      if (rawBody.business_stage === 'starting') canonicalSituation = 'not_started';
+      else if (rawBody.business_stage === 'needs_structure') canonicalSituation = 'in_house';
+      else if (rawBody.business_stage === 'has_presence') canonicalSituation = 'active_agency_or_freelancer';
+      else if (rawBody.business_stage === 'professionalizing') canonicalSituation = 'wants_improvement';
+
       // Adapt legacy structure
       parsedPayload = {
         lead_type: 'business',
         contact_name: (rawBody.name || '').trim(),
         business_name: (rawBody.business_name || '').trim(),
         segment_or_profession: 'Não especificado (legado)',
-        services_interest: [rawBody.service || 'not_sure'],
-        current_situation: [rawBody.business_stage || 'needs_structure'],
+        services_interest: [canonicalService],
+        current_situation: [canonicalSituation],
         objectives: ['attract_clients'],
         notes: rawBody.message || undefined,
         preferred_contact: rawBody.preferred_contact === 'email' ? 'email' : 'whatsapp',
