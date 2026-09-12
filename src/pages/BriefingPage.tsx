@@ -268,7 +268,7 @@ export const BriefingPage: React.FC = () => {
 
       {/* Top Header */}
       <header className="sticky top-0 z-40 bg-brand-dark/90 backdrop-blur-md border-b border-brand-light/10">
-        <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between h-16 sm:h-20">
+        <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between h-14 sm:h-16">
           {/* Brand Logo -> Home */}
           <button
             type="button"
@@ -284,7 +284,7 @@ export const BriefingPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate('/')}
-              className="text-xs sm:text-sm font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-2 px-3 border border-transparent hover:border-brand-light/10 cursor-pointer"
+              className="text-xs sm:text-sm font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-1.5 px-2.5 border border-transparent hover:border-brand-light/10 cursor-pointer"
             >
               Voltar ao site
             </button>
@@ -305,18 +305,18 @@ export const BriefingPage: React.FC = () => {
       </header>
 
       {/* Main Form Canvas */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-5 sm:px-8 md:px-12 py-8 sm:py-12 md:py-16 flex flex-col justify-between relative z-10">
+      <main className="flex-1 w-full max-w-[840px] mx-auto px-5 sm:px-8 md:px-10 pt-4 pb-6 sm:pt-6 sm:pb-8 md:pt-6 md:pb-8 flex flex-col justify-between relative z-10">
         <div className="w-full">
           {/* Step Indicator Header (Steps 0 to 5) */}
           {currentStep < 6 && (
-            <div className="flex items-center justify-between mb-8 sm:mb-12">
-              <div className="flex items-center gap-3">
-                <span className="w-4 h-[2px] bg-brand-coral rounded-full" />
-                <span className="text-xs font-mono tracking-widest uppercase text-brand-coral font-medium">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <div className="flex items-center gap-2.5">
+                <span className="w-3 h-[2px] bg-brand-coral rounded-full" />
+                <span className="text-[11px] sm:text-xs font-mono tracking-widest uppercase text-brand-coral font-medium">
                   Briefing Melière
                 </span>
               </div>
-              <span className="text-xs font-mono tracking-wider text-brand-light/50 uppercase">
+              <span className="text-[11px] sm:text-xs font-mono tracking-wider text-brand-light/50 uppercase">
                 Etapa {currentStep + 1} de {totalSteps}
               </span>
             </div>
@@ -335,38 +335,38 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-8 sm:gap-10"
+                className="flex flex-col gap-6 sm:gap-7"
               >
-                <div className="space-y-3">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     Como você atua hoje?
                   </h1>
-                  <p className="text-base sm:text-lg text-brand-light/70 font-light max-w-xl">
+                  <p className="text-sm sm:text-base text-brand-light/70 font-light max-w-xl leading-relaxed">
                     Selecione o perfil que melhor define a sua estrutura atual para personalizarmos o diagnóstico.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-1">
                   {/* Option 1: Empresa */}
                   <button
                     type="button"
                     onClick={() => handleSelectLeadType('business')}
-                    className={`group p-6 sm:p-8 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[160px] sm:min-h-[190px] ${
+                    className={`group p-5 sm:p-6 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[140px] sm:min-h-[160px] ${
                       formData.leadType === 'business'
                         ? 'border-brand-coral bg-brand-coral/[0.08] shadow-[0_0_24px_rgba(241,90,60,0.15)]'
                         : 'border-brand-light/15 bg-[#161616] hover:border-brand-coral hover:bg-[#1a1a1a]'
                     }`}
                   >
-                    <div className="flex items-center justify-between w-full mb-4">
-                      <div className="p-3 bg-brand-light/5 text-brand-coral group-hover:bg-brand-coral group-hover:text-white transition-colors">
-                        <Building2 className="w-6 h-6" />
+                    <div className="flex items-center justify-between w-full mb-3">
+                      <div className="p-2.5 bg-brand-light/5 text-brand-coral group-hover:bg-brand-coral group-hover:text-white transition-colors">
+                        <Building2 className="w-5 h-5" />
                       </div>
                       <span className="text-xs font-mono text-brand-coral opacity-0 group-hover:opacity-100 transition-opacity">
                         Selecionar →
                       </span>
                     </div>
                     <div>
-                      <h2 className="text-lg sm:text-xl font-bold text-brand-light group-hover:text-brand-coral transition-colors mb-1.5">
+                      <h2 className="text-base sm:text-lg font-bold text-brand-light group-hover:text-brand-coral transition-colors mb-1">
                         Tenho uma empresa
                       </h2>
                       <p className="text-xs sm:text-sm text-brand-light/60 font-light leading-relaxed">
@@ -379,22 +379,22 @@ export const BriefingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleSelectLeadType('self_employed')}
-                    className={`group p-6 sm:p-8 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[160px] sm:min-h-[190px] ${
+                    className={`group p-5 sm:p-6 text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[140px] sm:min-h-[160px] ${
                       formData.leadType === 'self_employed'
                         ? 'border-brand-coral bg-brand-coral/[0.08] shadow-[0_0_24px_rgba(241,90,60,0.15)]'
                         : 'border-brand-light/15 bg-[#161616] hover:border-brand-coral hover:bg-[#1a1a1a]'
                     }`}
                   >
-                    <div className="flex items-center justify-between w-full mb-4">
-                      <div className="p-3 bg-brand-light/5 text-brand-coral group-hover:bg-brand-coral group-hover:text-white transition-colors">
-                        <User className="w-6 h-6" />
+                    <div className="flex items-center justify-between w-full mb-3">
+                      <div className="p-2.5 bg-brand-light/5 text-brand-coral group-hover:bg-brand-coral group-hover:text-white transition-colors">
+                        <User className="w-5 h-5" />
                       </div>
                       <span className="text-xs font-mono text-brand-coral opacity-0 group-hover:opacity-100 transition-opacity">
                         Selecionar →
                       </span>
                     </div>
                     <div>
-                      <h2 className="text-lg sm:text-xl font-bold text-brand-light group-hover:text-brand-coral transition-colors mb-1.5">
+                      <h2 className="text-base sm:text-lg font-bold text-brand-light group-hover:text-brand-coral transition-colors mb-1">
                         Trabalho como autônomo
                       </h2>
                       <p className="text-xs sm:text-sm text-brand-light/60 font-light leading-relaxed">
@@ -417,20 +417,20 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-6 sm:gap-8"
+                className="flex flex-col gap-4 sm:gap-5"
               >
-                <div className="space-y-2.5">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     {isBusiness
                       ? 'O que você gostaria de melhorar no seu negócio hoje?'
                       : 'O que você gostaria de melhorar na sua presença profissional hoje?'}
                   </h1>
-                  <p className="text-xs sm:text-sm font-mono text-brand-coral/90 tracking-wide uppercase">
+                  <p className="text-[11px] sm:text-xs font-mono text-brand-coral/90 tracking-wider uppercase">
                     Você pode selecionar mais de uma opção.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
                   {servicesOptions.map((opt) => {
                     const isSelected = formData.servicesInterest.includes(opt);
                     return (
@@ -438,23 +438,23 @@ export const BriefingPage: React.FC = () => {
                         key={opt}
                         type="button"
                         onClick={() => toggleArrayItem('servicesInterest', opt)}
-                        className={`p-4 sm:p-5 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 min-h-[64px] ${
+                        className={`py-3 px-3.5 sm:py-3.5 sm:px-4 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 min-h-[52px] sm:min-h-[56px] ${
                           isSelected
                             ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                             : 'border-brand-light/15 bg-[#161616] text-brand-light/85 hover:border-brand-coral/50 hover:bg-[#1c1c1c]'
                         }`}
                       >
-                        <span className="text-sm sm:text-base font-medium leading-snug">
+                        <span className="text-xs sm:text-sm font-medium leading-snug">
                           {opt}
                         </span>
                         <div
-                          className={`w-5 h-5 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
+                          className={`w-4 h-4 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
                             isSelected
                               ? 'bg-brand-coral border-brand-coral text-white'
                               : 'border-brand-light/30 bg-transparent'
                           }`}
                         >
-                          {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                         </div>
                       </button>
                     );
@@ -474,20 +474,20 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-6 sm:gap-8"
+                className="flex flex-col gap-4 sm:gap-5"
               >
-                <div className="space-y-2.5">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     {isBusiness
                       ? 'Como essa área funciona hoje na sua empresa?'
                       : 'Como você cuida dessa parte hoje?'}
                   </h1>
-                  <p className="text-xs sm:text-sm font-mono text-brand-coral/90 tracking-wide uppercase">
+                  <p className="text-[11px] sm:text-xs font-mono text-brand-coral/90 tracking-wider uppercase">
                     Você pode selecionar mais de uma opção.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3.5 sm:gap-4 pt-2">
+                <div className="grid grid-cols-1 gap-2.5 sm:gap-3 pt-1">
                   {situationOptions.map((opt) => {
                     const isSelected = formData.currentSituation.includes(opt);
                     return (
@@ -495,23 +495,23 @@ export const BriefingPage: React.FC = () => {
                         key={opt}
                         type="button"
                         onClick={() => toggleArrayItem('currentSituation', opt)}
-                        className={`p-4 sm:p-5 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 min-h-[58px] ${
+                        className={`py-3 px-3.5 sm:py-3.5 sm:px-4 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 min-h-[50px] sm:min-h-[52px] ${
                           isSelected
                             ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                             : 'border-brand-light/15 bg-[#161616] text-brand-light/85 hover:border-brand-coral/50 hover:bg-[#1c1c1c]'
                         }`}
                       >
-                        <span className="text-sm sm:text-base font-medium leading-snug">
+                        <span className="text-xs sm:text-sm font-medium leading-snug">
                           {opt}
                         </span>
                         <div
-                          className={`w-5 h-5 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
+                          className={`w-4 h-4 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
                             isSelected
                               ? 'bg-brand-coral border-brand-coral text-white'
                               : 'border-brand-light/30 bg-transparent'
                           }`}
                         >
-                          {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                         </div>
                       </button>
                     );
@@ -531,18 +531,18 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-6 sm:gap-8"
+                className="flex flex-col gap-4 sm:gap-5"
               >
-                <div className="space-y-2.5">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     Qual é o principal objetivo agora?
                   </h1>
-                  <p className="text-xs sm:text-sm font-mono text-brand-coral/90 tracking-wide uppercase">
+                  <p className="text-[11px] sm:text-xs font-mono text-brand-coral/90 tracking-wider uppercase">
                     Você pode selecionar mais de uma opção.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1">
                   {objectivesOptions.map((opt) => {
                     const isSelected = formData.objectives.includes(opt);
                     return (
@@ -550,23 +550,23 @@ export const BriefingPage: React.FC = () => {
                         key={opt}
                         type="button"
                         onClick={() => toggleArrayItem('objectives', opt)}
-                        className={`p-4 sm:p-5 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 min-h-[60px] ${
+                        className={`py-3 px-3.5 sm:py-3.5 sm:px-4 text-left border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 min-h-[50px] sm:min-h-[54px] ${
                           isSelected
                             ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                             : 'border-brand-light/15 bg-[#161616] text-brand-light/85 hover:border-brand-coral/50 hover:bg-[#1c1c1c]'
                         }`}
                       >
-                        <span className="text-sm sm:text-base font-medium leading-snug">
+                        <span className="text-xs sm:text-sm font-medium leading-snug">
                           {opt}
                         </span>
                         <div
-                          className={`w-5 h-5 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
+                          className={`w-4 h-4 rounded-none border flex items-center justify-center shrink-0 transition-colors ${
                             isSelected
                               ? 'bg-brand-coral border-brand-coral text-white'
                               : 'border-brand-light/30 bg-transparent'
                           }`}
                         >
-                          {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                         </div>
                       </button>
                     );
@@ -576,13 +576,13 @@ export const BriefingPage: React.FC = () => {
                 {/* Conditional Text Field when "Outro" is selected */}
                 {formData.objectives.includes('Outro') && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-5 bg-[#161616] border border-brand-coral/40 flex flex-col gap-2"
+                    className="p-4 bg-[#161616] border border-brand-coral/40 flex flex-col gap-1.5"
                   >
                     <label
                       htmlFor="other-objective-input"
-                      className="text-xs font-mono uppercase tracking-wider text-brand-coral"
+                      className="text-[11px] font-mono uppercase tracking-wider text-brand-coral"
                     >
                       Especifique o seu objetivo:
                     </label>
@@ -597,7 +597,7 @@ export const BriefingPage: React.FC = () => {
                         }))
                       }
                       placeholder="Ex: Abrir filial em outra cidade, reposicionar para público premium..."
-                      className="w-full bg-brand-dark/80 border border-brand-light/20 px-4 py-3 text-sm text-brand-light focus:outline-none focus:border-brand-coral"
+                      className="w-full bg-brand-dark/80 border border-brand-light/20 px-3.5 py-2.5 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral"
                       autoFocus
                     />
                   </motion.div>
@@ -616,27 +616,27 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-6 sm:gap-8"
+                className="flex flex-col gap-4 sm:gap-5"
               >
-                <div className="space-y-2.5">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     {isBusiness
                       ? 'Conte um pouco sobre a empresa.'
                       : 'Conte um pouco sobre o seu trabalho.'}
                   </h1>
-                  <p className="text-sm sm:text-base text-brand-light/70 font-light">
+                  <p className="text-xs sm:text-sm text-brand-light/70 font-light">
                     {isBusiness
                       ? 'Informações básicas para compreendermos seu contexto e mercado.'
                       : 'Informações básicas para compreendermos sua atuação e posicionamento.'}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 pt-2">
+                <div className="grid grid-cols-1 gap-3.5 sm:gap-4 pt-1">
                   {/* Field 1: Name */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="primary-name-input"
-                      className="text-xs font-mono uppercase tracking-wider text-brand-light/70 flex items-center justify-between"
+                      className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70 flex items-center justify-between"
                     >
                       <span>
                         {isBusiness ? 'Nome da empresa' : 'Seu nome completo'}{' '}
@@ -663,15 +663,15 @@ export const BriefingPage: React.FC = () => {
                           ? 'Ex: Grupo Silva, Construtora Alpha, Melière...'
                           : 'Ex: Dra. Juliana Costa, Lucas Mendes...'
                       }
-                      className="w-full bg-[#161616] border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                      className="w-full bg-[#161616] border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                     />
                   </div>
 
                   {/* Field 2: Segment / Profession */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="segment-input"
-                      className="text-xs font-mono uppercase tracking-wider text-brand-light/70"
+                      className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70"
                     >
                       {isBusiness ? 'Segmento' : 'Profissão / Área de atuação'}{' '}
                       <span className="text-brand-coral">*</span>
@@ -691,15 +691,15 @@ export const BriefingPage: React.FC = () => {
                           ? 'Ex: Tecnologia, Moda, Saúde, Indústria, Consultoria...'
                           : 'Ex: Advogado, Arquiteto, Cirurgião-dentista, Designer...'
                       }
-                      className="w-full bg-[#161616] border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                      className="w-full bg-[#161616] border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                     />
                   </div>
 
                   {/* Field 3: Site or Instagram (Optional) */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="website-input"
-                      className="text-xs font-mono uppercase tracking-wider text-brand-light/50"
+                      className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/50"
                     >
                       Site ou Instagram <span className="text-brand-light/40">(opcional)</span>
                     </label>
@@ -714,22 +714,22 @@ export const BriefingPage: React.FC = () => {
                         }))
                       }
                       placeholder="Ex: @seuperfil ou www.suaempresa.com.br"
-                      className="w-full bg-[#161616] border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                      className="w-full bg-[#161616] border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                     />
                   </div>
 
                   {/* Field 4: Notes (Optional) */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="notes-input"
-                      className="text-xs font-mono uppercase tracking-wider text-brand-light/50"
+                      className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/50"
                     >
                       Algo importante que devemos saber?{' '}
                       <span className="text-brand-light/40">(opcional)</span>
                     </label>
                     <textarea
                       id="notes-input"
-                      rows={3}
+                      rows={2}
                       value={formData.notes || ''}
                       onChange={(e) =>
                         setFormData((prev) => ({
@@ -738,7 +738,7 @@ export const BriefingPage: React.FC = () => {
                         }))
                       }
                       placeholder="Desafios pontuais, histórico anterior, prazos ou qualquer detalhe relevante..."
-                      className="w-full bg-[#161616] border border-brand-light/20 px-4 py-3 text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors resize-none"
+                      className="w-full bg-[#161616] border border-brand-light/20 px-3.5 py-2.5 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors resize-none"
                     />
                   </div>
                 </div>
@@ -756,33 +756,33 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col gap-6 sm:gap-8"
+                className="flex flex-col gap-4 sm:gap-5"
               >
-                <div className="space-y-2.5">
-                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light leading-tight">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] font-bold tracking-tight text-brand-light leading-snug">
                     Como você prefere que a gente entre em contato?
                   </h1>
-                  <p className="text-sm sm:text-base text-brand-light/70 font-light">
+                  <p className="text-xs sm:text-sm text-brand-light/70 font-light">
                     Selecione o canal mais confortável para receber nosso retorno.
                   </p>
                 </div>
 
                 {/* 3 Contact Method Choice Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1">
                   {/* WhatsApp */}
                   <button
                     type="button"
                     onClick={() => handleSelectContactMethod('whatsapp')}
-                    className={`p-4 sm:p-5 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-3 text-center min-h-[110px] ${
+                    className={`p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-2 text-center min-h-[90px] sm:min-h-[96px] ${
                       formData.preferredContact === 'whatsapp'
                         ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                         : 'border-brand-light/15 bg-[#161616] text-brand-light/80 hover:border-brand-coral hover:bg-[#1a1a1a]'
                     }`}
                   >
-                    <div className="p-2.5 bg-brand-light/5 text-brand-coral">
-                      <MessageCircle className="w-5 h-5" />
+                    <div className="p-2 bg-brand-light/5 text-brand-coral">
+                      <MessageCircle className="w-4 h-4" />
                     </div>
-                    <span className="text-sm font-bold uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
                       WhatsApp
                     </span>
                   </button>
@@ -791,16 +791,16 @@ export const BriefingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleSelectContactMethod('phone')}
-                    className={`p-4 sm:p-5 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-3 text-center min-h-[110px] ${
+                    className={`p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-2 text-center min-h-[90px] sm:min-h-[96px] ${
                       formData.preferredContact === 'phone'
                         ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                         : 'border-brand-light/15 bg-[#161616] text-brand-light/80 hover:border-brand-coral hover:bg-[#1a1a1a]'
                     }`}
                   >
-                    <div className="p-2.5 bg-brand-light/5 text-brand-coral">
-                      <Phone className="w-5 h-5" />
+                    <div className="p-2 bg-brand-light/5 text-brand-coral">
+                      <Phone className="w-4 h-4" />
                     </div>
-                    <span className="text-sm font-bold uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
                       Ligação
                     </span>
                   </button>
@@ -809,16 +809,16 @@ export const BriefingPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleSelectContactMethod('email')}
-                    className={`p-4 sm:p-5 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-3 text-center min-h-[110px] ${
+                    className={`p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center gap-2 text-center min-h-[90px] sm:min-h-[96px] ${
                       formData.preferredContact === 'email'
                         ? 'border-brand-coral bg-brand-coral/[0.12] text-white shadow-sm'
                         : 'border-brand-light/15 bg-[#161616] text-brand-light/80 hover:border-brand-coral hover:bg-[#1a1a1a]'
                     }`}
                   >
-                    <div className="p-2.5 bg-brand-light/5 text-brand-coral">
-                      <Mail className="w-5 h-5" />
+                    <div className="p-2 bg-brand-light/5 text-brand-coral">
+                      <Mail className="w-4 h-4" />
                     </div>
-                    <span className="text-sm font-bold uppercase tracking-wider">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">
                       E-mail
                     </span>
                   </button>
@@ -827,15 +827,15 @@ export const BriefingPage: React.FC = () => {
                 {/* Dynamic Contact Fields based on preference */}
                 {formData.preferredContact && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-6 sm:p-8 bg-[#161616] border border-brand-light/15 flex flex-col gap-5 mt-2"
+                    className="p-5 sm:p-6 bg-[#161616] border border-brand-light/15 flex flex-col gap-4 mt-1"
                   >
                     {/* Common Field: Contact Name */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1.5">
                       <label
                         htmlFor="contact-name-input"
-                        className="text-xs font-mono uppercase tracking-wider text-brand-light/70"
+                        className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70"
                       >
                         Seu nome <span className="text-brand-coral">*</span>
                       </label>
@@ -850,16 +850,16 @@ export const BriefingPage: React.FC = () => {
                           }))
                         }
                         placeholder="Como devemos lhe chamar?"
-                        className="w-full bg-brand-dark/80 border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                        className="w-full bg-brand-dark/80 border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                       />
                     </div>
 
                     {/* WhatsApp Specific */}
                     {formData.preferredContact === 'whatsapp' && (
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1.5">
                         <label
                           htmlFor="contact-whatsapp-input"
-                          className="text-xs font-mono uppercase tracking-wider text-brand-light/70"
+                          className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70"
                         >
                           Número de WhatsApp com DDD{' '}
                           <span className="text-brand-coral">*</span>
@@ -875,7 +875,7 @@ export const BriefingPage: React.FC = () => {
                             }))
                           }
                           placeholder="(00) 00000-0000"
-                          className="w-full bg-brand-dark/80 border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                          className="w-full bg-brand-dark/80 border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                         />
                       </div>
                     )}
@@ -883,10 +883,10 @@ export const BriefingPage: React.FC = () => {
                     {/* Ligação Specific */}
                     {formData.preferredContact === 'phone' && (
                       <>
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1.5">
                           <label
                             htmlFor="contact-phone-input"
-                            className="text-xs font-mono uppercase tracking-wider text-brand-light/70"
+                            className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70"
                           >
                             Telefone para contato com DDD{' '}
                             <span className="text-brand-coral">*</span>
@@ -902,16 +902,16 @@ export const BriefingPage: React.FC = () => {
                               }))
                             }
                             placeholder="(00) 00000-0000"
-                            className="w-full bg-brand-dark/80 border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                            className="w-full bg-brand-dark/80 border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                           />
                         </div>
 
-                        <div className="flex flex-col gap-2.5">
-                          <span className="text-xs font-mono uppercase tracking-wider text-brand-light/70">
+                        <div className="flex flex-col gap-2">
+                          <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70">
                             Melhor período para ligarmos{' '}
                             <span className="text-brand-coral">*</span>
                           </span>
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-2 gap-2.5">
                             {(['morning', 'afternoon'] as CallPeriod[]).map(
                               (period) => (
                                 <button
@@ -923,7 +923,7 @@ export const BriefingPage: React.FC = () => {
                                       preferredCallPeriod: period,
                                     }))
                                   }
-                                  className={`py-3 px-4 text-xs font-mono uppercase tracking-wider border cursor-pointer transition-colors ${
+                                  className={`py-2.5 px-3 text-xs font-mono uppercase tracking-wider border cursor-pointer transition-colors ${
                                     formData.preferredCallPeriod === period
                                       ? 'border-brand-coral bg-brand-coral text-white font-semibold'
                                       : 'border-brand-light/20 bg-brand-dark/50 text-brand-light/80 hover:border-brand-coral'
@@ -942,10 +942,10 @@ export const BriefingPage: React.FC = () => {
 
                     {/* E-mail Specific */}
                     {formData.preferredContact === 'email' && (
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1.5">
                         <label
                           htmlFor="contact-email-input"
-                          className="text-xs font-mono uppercase tracking-wider text-brand-light/70"
+                          className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-light/70"
                         >
                           Seu melhor e-mail{' '}
                           <span className="text-brand-coral">*</span>
@@ -961,14 +961,14 @@ export const BriefingPage: React.FC = () => {
                             }))
                           }
                           placeholder="nome@empresa.com.br"
-                          className="w-full bg-brand-dark/80 border border-brand-light/20 px-4 py-3.5 text-sm sm:text-base text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
+                          className="w-full bg-brand-dark/80 border border-brand-light/20 px-3.5 py-2.5 sm:py-3 text-xs sm:text-sm text-brand-light focus:outline-none focus:border-brand-coral transition-colors"
                         />
                       </div>
                     )}
 
                     {/* Submission Error Banner */}
                     {submitStatus === 'error' && (
-                      <div className="p-4 bg-red-950/30 border border-red-500/40 text-red-200 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-2">
+                      <div className="p-3.5 bg-red-950/30 border border-red-500/40 text-red-200 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-1">
                         <div>
                           <p className="font-semibold text-red-100">Não conseguimos enviar agora.</p>
                           <p className="text-xs text-red-300 font-light mt-0.5">
@@ -978,7 +978,7 @@ export const BriefingPage: React.FC = () => {
                         <button
                           type="button"
                           onClick={handleSubmitBriefing}
-                          className="px-3.5 py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-mono uppercase tracking-wider transition-colors shrink-0 cursor-pointer font-medium"
+                          className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white text-xs font-mono uppercase tracking-wider transition-colors shrink-0 cursor-pointer font-medium"
                         >
                           Tentar novamente
                         </button>
@@ -1000,29 +1000,29 @@ export const BriefingPage: React.FC = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="flex flex-col items-start gap-8 sm:gap-10 py-4"
+                className="flex flex-col items-start gap-6 sm:gap-8 py-2"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-brand-coral/10 border border-brand-coral text-brand-coral">
-                    <CheckCircle2 className="w-8 h-8" />
+                  <div className="p-2.5 bg-brand-coral/10 border border-brand-coral text-brand-coral">
+                    <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                   <div>
-                    <span className="text-xs font-mono tracking-widest uppercase text-brand-coral font-medium block">
+                    <span className="text-[11px] sm:text-xs font-mono tracking-widest uppercase text-brand-coral font-medium block">
                       RECEBEMOS SUA SOLICITAÇÃO
                     </span>
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-light">
+                    <h1 className="text-xl sm:text-3xl md:text-4xl font-bold tracking-tight text-brand-light">
                       Recebemos. Agora é com a gente.
                     </h1>
                   </div>
                 </div>
 
-                <p className="text-base sm:text-lg text-brand-light/80 font-light leading-relaxed max-w-2xl">
+                <p className="text-sm sm:text-base text-brand-light/80 font-light leading-relaxed max-w-2xl">
                   Vamos analisar as informações que você enviou e entrar em contato pelo canal escolhido.
                 </p>
 
                 {/* Summary Card */}
-                <div className="w-full p-6 sm:p-8 bg-[#161616] border border-brand-light/15 flex flex-col gap-6">
-                  <div className="flex items-center justify-between border-b border-brand-light/10 pb-4">
+                <div className="w-full p-5 sm:p-6 bg-[#161616] border border-brand-light/15 flex flex-col gap-4">
+                  <div className="flex items-center justify-between border-b border-brand-light/10 pb-3">
                     <span className="text-xs font-mono uppercase tracking-wider text-brand-coral font-semibold">
                       Resumo da Solicitação
                     </span>
@@ -1031,9 +1031,9 @@ export const BriefingPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
                     <div>
-                      <span className="text-xs font-mono uppercase text-brand-light/50 block mb-1">
+                      <span className="text-[11px] font-mono uppercase text-brand-light/50 block mb-0.5">
                         {isBusiness ? 'Empresa' : 'Profissional'}
                       </span>
                       <p className="font-semibold text-brand-light">
@@ -1047,7 +1047,7 @@ export const BriefingPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <span className="text-xs font-mono uppercase text-brand-light/50 block mb-1">
+                      <span className="text-[11px] font-mono uppercase text-brand-light/50 block mb-0.5">
                         Canal de Retorno
                       </span>
                       <p className="font-semibold text-brand-light">
@@ -1059,14 +1059,14 @@ export const BriefingPage: React.FC = () => {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <span className="text-xs font-mono uppercase text-brand-light/50 block mb-2">
+                      <span className="text-[11px] font-mono uppercase text-brand-light/50 block mb-1.5">
                         Áreas de Interesse
                       </span>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5">
                         {formData.servicesInterest.map((s) => (
                           <span
                             key={s}
-                            className="px-2.5 py-1 bg-brand-light/5 border border-brand-light/10 text-xs font-mono text-brand-light/85"
+                            className="px-2 py-0.5 bg-brand-light/5 border border-brand-light/10 text-xs font-mono text-brand-light/85"
                           >
                             {s}
                           </span>
@@ -1077,11 +1077,11 @@ export const BriefingPage: React.FC = () => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                   <Button
                     onClick={() => navigate('/')}
                     variant="primary"
-                    size="lg"
+                    size="md"
                     className="w-full sm:w-auto"
                   >
                     <span>Voltar ao site</span>
@@ -1090,7 +1090,7 @@ export const BriefingPage: React.FC = () => {
                   <Button
                     onClick={() => navigate('/#servicos')}
                     variant="outline"
-                    size="lg"
+                    size="md"
                     className="w-full sm:w-auto"
                   >
                     <span>Conhecer nossos serviços</span>
@@ -1103,17 +1103,17 @@ export const BriefingPage: React.FC = () => {
 
         {/* Bottom Control Bar (Steps 1 to 5) */}
         {currentStep >= 1 && currentStep < 6 && (
-          <div className="flex items-center justify-between pt-10 sm:pt-14 border-t border-brand-light/10 mt-10">
+          <div className="flex items-center justify-between pt-5 sm:pt-6 border-t border-brand-light/10 mt-6 sm:mt-8">
             {/* Back Button */}
             <button
               type="button"
               onClick={prevStep}
               disabled={submitStatus === 'submitting'}
-              className={`inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-3 px-2 ${
+              className={`inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-brand-light/70 hover:text-brand-coral transition-colors py-2 px-1.5 ${
                 submitStatus === 'submitting' ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
               }`}
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>Voltar</span>
             </button>
 
@@ -1124,7 +1124,7 @@ export const BriefingPage: React.FC = () => {
                 disabled={!isStepValid() || submitStatus === 'submitting'}
                 variant="primary"
                 size="md"
-                className={`gap-2.5 shadow-md ${
+                className={`gap-2 shadow-md ${
                   !isStepValid() || submitStatus === 'submitting'
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
@@ -1132,13 +1132,13 @@ export const BriefingPage: React.FC = () => {
               >
                 {submitStatus === 'submitting' ? (
                   <>
-                    <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span className="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     <span>Enviando...</span>
                   </>
                 ) : (
                   <>
                     <span>Concluir Briefing</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </>
                 )}
               </Button>
@@ -1148,12 +1148,12 @@ export const BriefingPage: React.FC = () => {
                 disabled={!isStepValid()}
                 variant="primary"
                 size="md"
-                className={`gap-2.5 shadow-md ${
+                className={`gap-2 shadow-md ${
                   !isStepValid() ? 'opacity-40 cursor-not-allowed' : ''
                 }`}
               >
                 <span>Continuar</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             )}
           </div>
