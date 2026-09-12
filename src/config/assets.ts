@@ -116,7 +116,7 @@ export const assets = {
 
   about: {
     // 01. Protagonist Editorial Photograph (Main Founder Portrait)
-    founderMain: 'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Editora/Fotos%20minhas/ChatGPT%20Image%2024%20de%20ago.%20de%202026,%2017_57_20.png',
+    founderMain: 'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Img%20e%20videos/ChatGPT%20Image%2012%20de%20set.%20de%202026,%2016_39_25.png',
     // 02. Secondary Editorial Photograph (Offset supporting moment)
     founderSecondary: 'https://ycagvwsvccgdjzpbhrfi.supabase.co/storage/v1/object/public/Editora/Fotos%20minhas/ChatGPT%20Image%2024%20de%20ago.%20de%202026,%2017_52_39.png',
     // 03. Institutional Reserve Photograph (Registered for future use - not used in current home)

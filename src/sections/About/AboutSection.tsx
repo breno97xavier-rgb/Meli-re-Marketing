@@ -213,11 +213,11 @@ export const AboutSection: React.FC = () => {
             LEFT COLUMN: PROTAGONIST PHOTOGRAPHY
             --------------------------------------------------------------------
           */}
-          <div className="lg:col-span-6 flex flex-col gap-6 sm:gap-8">
+          <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-6 sm:gap-8">
             {/* Protagonist Photograph (Main Portrait) */}
             <div
               ref={photoMainRef}
-              className="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] rounded-2xl overflow-hidden bg-brand-dark/5 border border-brand-dark/10 shadow-sm group"
+              className="relative w-full aspect-[4/5] max-h-[480px] sm:max-h-[540px] lg:max-h-[580px] xl:max-h-[620px] rounded-2xl overflow-hidden bg-brand-dark/5 border border-brand-dark/10 shadow-sm group mx-auto lg:mx-0"
             >
               <img
                 src={assets.about.founderMain}
@@ -235,7 +235,7 @@ export const AboutSection: React.FC = () => {
             RIGHT COLUMN: NARRATIVE, FOUNDER PROFILE & EDITORIAL ACCENTS
             --------------------------------------------------------------------
           */}
-          <div className="lg:col-span-6 flex flex-col justify-between gap-8 sm:gap-10">
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between gap-8 sm:gap-10">
             {/* Main Narrative Paragraphs */}
             <div ref={narrativeRef} className="space-y-6">
               <div className="flex items-center gap-3">

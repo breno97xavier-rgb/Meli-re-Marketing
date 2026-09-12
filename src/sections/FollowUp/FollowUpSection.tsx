@@ -1,31 +1,40 @@
 import React, { useRef, useEffect } from 'react';
 import { SectionEyebrow } from '../../components/ui/SectionEyebrow';
-import { EditorialWorkspacePreview } from './components/EditorialWorkspacePreview';
 import { gsap, ScrollTrigger } from '../../lib/gsap';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useAtmosphere } from '../../context/AtmosphereContext';
 
 /**
- * Seção Acompanhamento da Melière Marketing (Fase 4)
- * Mostra como a agência mantém rigor, organização, rotina e transparência.
- * Composta por:
- * 1. Introdução editorial com headline forte e 3 microcopies conceituais
- * 2. Preview conceitual do workspace interno de processos
- * 3. Fechamento monumental ("Organização também faz parte da estratégia.")
- * 4. Transição progressiva de atmosfera light (#EDEEEE) -> dark (#1D1D1D)
+ * Seção Acompanhamento da Melière Marketing
+ * Layout predominantemente tipográfico e editorial:
+ * 1. Bloco superior: 2 colunas com Eyebrow + Headline à esquerda e Parágrafo principal à direita
+ * 2. Bloco intermediário: 3 pontos estruturados em grid horizontal
+ * 3. Bloco inferior: Callout institucional de governança e direção contínua
+ * 4. Fechamento monumental: "Organização também faz parte da estratégia."
  */
 export const FollowUpSection: React.FC = () => {
   const containerRef = useRef<HTMLElement | null>(null);
   const closingRef = useRef<HTMLDivElement | null>(null);
-  const textColRef = useRef<HTMLDivElement | null>(null);
+  const topBlockRef = useRef<HTMLDivElement | null>(null);
+  const itemsRef = useRef<HTMLDivElement | null>(null);
+  const calloutRef = useRef<HTMLDivElement | null>(null);
   const quoteRef = useRef<HTMLQuoteElement | null>(null);
   const { setAtmosphere } = useAtmosphere();
   const reducedMotion = useReducedMotion();
 
-  const microcopies = [
-    'Cada etapa registrada.',
-    'Cada decisão com contexto.',
-    'Cada próximo passo mais claro.',
+  const points = [
+    {
+      number: '01',
+      text: 'Cada etapa registrada.',
+    },
+    {
+      number: '02',
+      text: 'Cada decisão com contexto.',
+    },
+    {
+      number: '03',
+      text: 'Cada próximo passo mais claro.',
+    },
   ];
 
   useEffect(() => {
@@ -42,41 +51,82 @@ export const FollowUpSection: React.FC = () => {
 
     if (!reducedMotion) {
       const ctx = gsap.context(() => {
-        // Entrance animation for left column narrative
-        gsap.fromTo(
-          textColRef.current,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: 'top 70%',
-              end: 'top 40%',
-              scrub: 0.6,
-            },
-          }
-        );
+        // Entrance animation for top block
+        if (topBlockRef.current) {
+          gsap.fromTo(
+            topBlockRef.current,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: topBlockRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+
+        // Entrance animation for 3 items
+        if (itemsRef.current) {
+          gsap.fromTo(
+            itemsRef.current,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: itemsRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+
+        // Entrance animation for callout
+        if (calloutRef.current) {
+          gsap.fromTo(
+            calloutRef.current,
+            { y: 25, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: calloutRef.current,
+                start: 'top 88%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
 
         // Entrance animation for closing statement
-        gsap.fromTo(
-          quoteRef.current,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: closingRef.current,
-              start: 'top 75%',
-              end: 'top 40%',
-              scrub: 0.6,
-            },
-          }
-        );
+        if (quoteRef.current) {
+          gsap.fromTo(
+            quoteRef.current,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: closingRef.current,
+                start: 'top 75%',
+                end: 'top 40%',
+                scrub: 0.6,
+              },
+            }
+          );
+        }
       }, containerRef);
 
       return () => {
@@ -98,55 +148,66 @@ export const FollowUpSection: React.FC = () => {
     >
       {/* 
         ========================================================================
-        1. MAIN NARRATIVE & CONCEPTUAL WORKSPACE DISPLAY
-        Asymmetric Layout: Text (38%) | Workspace Interface (62%)
+        1. MAIN EDITORIAL NARRATIVE
+        Balanced Composition: Upper 2-column text block | 3-column horizontal grid | Wide Callout
         ========================================================================
       */}
-      <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
-          {/* Left Column: Narrative Block (5 cols) */}
-          <div ref={textColRef} className="lg:col-span-5 flex flex-col gap-5 sm:gap-7">
-            <div className="flex items-center justify-between">
+      <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 pt-20 sm:pt-28 md:pt-32 pb-20 sm:pb-28 flex flex-col gap-12 sm:gap-16 lg:gap-20">
+        
+        {/* BLOCO SUPERIOR: 2 COLUNAS DE TEXTO */}
+        <div ref={topBlockRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-start">
+          {/* Coluna Esquerda: Eyebrow + Headline */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col gap-5 sm:gap-6">
+            <div className="flex items-center justify-between pb-3 border-b border-brand-dark/10">
               <SectionEyebrow variant="coral">ACOMPANHAMENTO</SectionEyebrow>
-              <div className="hidden md:block font-mono text-xs text-brand-dark/50 tracking-[0.16em] uppercase font-medium">
+              <div className="font-mono text-xs text-brand-dark/50 tracking-[0.16em] uppercase font-medium">
                 ROTINA & CLAREZA
               </div>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-dark leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-brand-dark leading-[1.1]">
               O trabalho não termina<br />
               <span className="text-brand-coral">quando a entrega começa.</span>
             </h2>
+          </div>
 
-            <p className="text-base sm:text-lg text-brand-dark/85 font-light leading-relaxed">
+          {/* Coluna Direita: Parágrafo Principal */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-end lg:pt-12">
+            <p className="text-lg sm:text-xl md:text-2xl text-brand-dark/85 font-light leading-relaxed">
               Planejamento, execução e acompanhamento fazem parte da mesma relação. A Melière mantém o trabalho organizado para que decisões, entregas e próximos passos estejam sempre claros.
             </p>
-
-            {/* 3 Mandated Microcopies */}
-            <div className="pt-3 border-t border-brand-dark/10 space-y-3">
-              {microcopies.map((copy) => (
-                <div key={copy} className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-brand-coral flex-shrink-0" />
-                  <span className="text-xs sm:text-sm font-mono tracking-wider text-brand-dark/80 font-medium uppercase">
-                    {copy}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Subtext Pillar (Desktop only) */}
-            <div className="hidden md:block p-4 rounded-lg bg-brand-dark/[0.03] border border-brand-dark/10">
-              <p className="text-xs sm:text-sm text-brand-dark/75 font-light leading-relaxed">
-                Você não contrata apenas tarefas executadas. Contrata direção contínua, governança de comunicação e acompanhamento estruturado.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Conceptual Workspace Interface (7 cols) */}
-          <div className="lg:col-span-7 w-full">
-            <EditorialWorkspacePreview />
           </div>
         </div>
+
+        {/* BLOCO INTERMEDIÁRIO: 3 PONTOS EM GRID HORIZONTAL */}
+        <div ref={itemsRef} className="pt-8 sm:pt-12 border-t border-brand-dark/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            {points.map((point) => (
+              <div
+                key={point.number}
+                className="p-6 sm:p-7 rounded-2xl bg-brand-dark/[0.025] border border-brand-dark/10 flex flex-col justify-between gap-4 hover:border-brand-coral/40 transition-colors"
+              >
+                <span className="font-mono text-xs sm:text-sm text-brand-coral font-semibold tracking-wider">
+                  {point.number}
+                </span>
+                <span className="text-sm sm:text-base font-mono tracking-wider text-brand-dark font-semibold uppercase leading-snug">
+                  {point.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* BLOCO INFERIOR: CALLOUT INSTITUCIONAL */}
+        <div ref={calloutRef} className="w-full max-w-4xl">
+          <div className="p-6 sm:p-8 rounded-2xl bg-brand-dark/[0.04] border border-brand-dark/12 flex items-start gap-4 sm:gap-5">
+            <div className="w-1.5 h-12 bg-brand-coral rounded-full flex-shrink-0 mt-0.5" />
+            <p className="text-sm sm:text-base md:text-lg text-brand-dark/80 font-light leading-relaxed">
+              Você não contrata apenas tarefas executadas. Contrata direção contínua, governança de comunicação e acompanhamento estruturado.
+            </p>
+          </div>
+        </div>
+
       </div>
 
       {/* 
