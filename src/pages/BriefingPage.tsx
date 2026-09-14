@@ -15,6 +15,7 @@ import {
   mapBriefingStateToPayload,
   submitBriefingLead,
 } from '../lib/briefingContracts';
+import { trackMetaLead } from '../lib/metaPixel';
 import {
   ArrowLeft,
   ArrowRight,
@@ -87,6 +88,7 @@ export const BriefingPage: React.FC = () => {
     if (res.success && res.lead_id) {
       setSubmittedLeadId(res.lead_id);
       setSubmitStatus('success');
+      trackMetaLead();
       setDirection(1);
       setCurrentStep(6);
       window.scrollTo({ top: 0, behavior: 'smooth' });

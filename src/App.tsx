@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AtmosphereProvider } from './context/AtmosphereContext';
 import { HomePage } from './pages/HomePage';
 import { BriefingPage } from './pages/BriefingPage';
+import { initMetaPixel, trackMetaPageView } from './lib/metaPixel';
 
 // Helper to scroll to top whenever pathname changes (e.g. going from / to /briefing)
 const RouteScrollToTop: React.FC = () => {
@@ -15,11 +16,24 @@ const RouteScrollToTop: React.FC = () => {
   return null;
 };
 
+// Helper to track Meta Pixel PageView on route transitions and initial mount
+const MetaPixelTracker: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    initMetaPixel();
+    trackMetaPageView();
+  }, [pathname]);
+
+  return null;
+};
+
 export default function App() {
   return (
     <BrowserRouter>
       <AtmosphereProvider>
         <RouteScrollToTop />
+        <MetaPixelTracker />
         <Routes>
           {/* Main Institutional Website */}
           <Route path="/" element={<HomePage />} />
