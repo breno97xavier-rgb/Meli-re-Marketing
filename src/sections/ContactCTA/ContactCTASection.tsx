@@ -4,6 +4,7 @@ import { RevealText } from '../../components/motion/RevealText';
 import { Button } from '../../components/ui/Button';
 import { brandTokens } from '../../config/brand';
 import { MessageCircle, Mail, Instagram, ArrowUpRight, MapPin } from 'lucide-react';
+import { trackBriefingCtaClick, trackWhatsappClick } from '../../lib/funnelTracking';
 
 export const ContactCTASection: React.FC = () => {
   return (
@@ -42,6 +43,7 @@ export const ContactCTASection: React.FC = () => {
                 variant="primary"
                 size="lg"
                 id="main-contact-section-cta"
+                onClick={() => trackBriefingCtaClick('contact_section')}
                 className="group relative overflow-hidden transition-all duration-300 shadow-md gap-3 text-sm sm:text-base px-8 sm:px-10 py-4 sm:py-5"
               >
                 <span>Fale sobre seu negócio</span>
@@ -61,6 +63,7 @@ export const ContactCTASection: React.FC = () => {
                 href={brandTokens.contact.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsappClick('contact_section')}
                 className="flex items-center justify-between p-3.5 bg-brand-dark/50 border border-brand-light/5 hover:border-brand-coral transition-colors group"
               >
                 <div className="flex items-center gap-3">

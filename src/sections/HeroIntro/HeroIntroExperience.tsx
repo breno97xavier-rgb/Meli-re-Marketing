@@ -8,6 +8,7 @@ import { Button } from '../../components/ui/Button';
 import { MeliereOrganicElement } from '../../components/canvas/MeliereOrganicElement';
 import { ArrowUpRight } from 'lucide-react';
 import { assets } from '../../config/assets';
+import { trackBriefingCtaClick } from '../../lib/funnelTracking';
 
 /**
  * HeroIntroExperience (FASE 2.5 — Sequência Narrativa e Liberdade Espacial do Motion)
@@ -290,7 +291,10 @@ export const HeroIntroExperience: React.FC = () => {
               </p>
               <Button
                 href="/briefing"
-                onClick={() => navigate('/briefing')}
+                onClick={() => {
+                  trackBriefingCtaClick('hero');
+                  navigate('/briefing');
+                }}
                 variant="primary"
                 size="lg"
               >
@@ -454,7 +458,10 @@ export const HeroIntroExperience: React.FC = () => {
               <div ref={heroCtaRef} className="pointer-events-auto">
                 <Button
                   href="/briefing"
-                  onClick={() => navigate('/briefing')}
+                  onClick={() => {
+                    trackBriefingCtaClick('hero');
+                    navigate('/briefing');
+                  }}
                   variant="primary"
                   size="md"
                   id="hero-cta-button"

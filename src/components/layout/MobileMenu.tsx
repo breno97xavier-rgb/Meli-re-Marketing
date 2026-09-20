@@ -4,6 +4,7 @@ import { brandTokens } from '../../config/brand';
 import { BrandLogo } from '../ui/BrandLogo';
 import { Button } from '../ui/Button';
 import { X, Instagram, Mail, MessageCircle } from 'lucide-react';
+import { trackBriefingCtaClick, trackWhatsappClick } from '../../lib/funnelTracking';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -94,7 +95,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           variant="primary"
           size="md"
           className="w-full text-center"
-          onClick={onClose}
+          onClick={() => {
+            trackBriefingCtaClick('mobile_menu');
+            onClose();
+          }}
         >
           {ctaConfig.label}
         </Button>
@@ -114,6 +118,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             href={brandTokens.contact.whatsapp.url}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsappClick('mobile_menu')}
             className="flex items-center gap-2.5 hover:text-brand-coral transition-colors py-1"
           >
             <MessageCircle className="w-4 h-4 text-brand-coral shrink-0" />

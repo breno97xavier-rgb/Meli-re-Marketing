@@ -17,6 +17,14 @@ import {
 } from '../lib/briefingContracts';
 import { trackMetaLead } from '../lib/metaPixel';
 import {
+  trackBriefingView,
+  trackFormStart,
+  trackFormStepCompleted,
+  trackFormBack,
+  trackFormError,
+  trackFormSubmit,
+} from '../lib/funnelTracking';
+import {
   ArrowLeft,
   ArrowRight,
   Check,
@@ -42,7 +50,7 @@ export const BriefingPage: React.FC = () => {
   const [submittedLeadId, setSubmittedLeadId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Load UTMs on mount and restore any existing session UTMs
+  // Load UTMs on mount, restore session UTMs and record anonymous briefing_view event
   useEffect(() => {
     const utms = captureUtmParams();
     const stored = getStoredUtmParams();
@@ -56,12 +64,34 @@ export const BriefingPage: React.FC = () => {
       utm_term: merged.utm_term,
       referrer: merged.referrer,
     }));
+
+    // Register anonymous briefing_view event with entry mode
+    trackBriefingView().catch(() => {});
   }, []);
 
   const totalSteps = 6; // 0, 1, 2, 3, 4, 5 (Step 6 is completion)
 
+  const stepTitles = [
+    'profile',
+    'services',
+    'current_situation',
+    'objectives',
+    'business_info',
+    'contact',
+  ];
+
   // Navigate forward
   const nextStep = () => {
+    if (!isStepValid()) {
+      trackFormError(currentStep + 1, 'validation_failed');
+      return;
+    }
+
+    // Track step completion
+    const stepNumber = currentStep + 1;
+    const title = stepTitles[currentStep] || `step_${stepNumber}`;
+    trackFormStepCompleted(stepNumber, title);
+
     setDirection(1);
     setCurrentStep((prev) => Math.min(prev + 1, 6));
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -69,6 +99,11 @@ export const BriefingPage: React.FC = () => {
 
   // Navigate backward
   const prevStep = () => {
+    if (currentStep > 0) {
+      const fromStep = currentStep + 1;
+      const toStep = currentStep;
+      trackFormBack(fromStep, toStep);
+    }
     setDirection(-1);
     setCurrentStep((prev) => Math.max(prev - 1, 0));
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,7 +112,14 @@ export const BriefingPage: React.FC = () => {
   // Submit Briefing Lead to Supabase Endpoint
   const handleSubmitBriefing = async () => {
     if (submitStatus === 'submitting' || submitStatus === 'success') return;
-    if (!isStepValid()) return;
+    if (!isStepValid()) {
+      trackFormError(6, 'validation_failed');
+      return;
+    }
+
+    // Track step 6 completion & form_submit attempt before network request
+    trackFormStepCompleted(6, 'contact');
+    trackFormSubmit(6);
 
     setSubmitStatus('submitting');
     setErrorMessage(null);
@@ -103,6 +145,8 @@ export const BriefingPage: React.FC = () => {
 
   // Step 0: Lead Profile
   const handleSelectLeadType = (type: LeadType) => {
+    trackFormStart('lead_type');
+    trackFormStepCompleted(1, 'profile');
     setFormData((prev) => ({ ...prev, leadType: type }));
     setDirection(1);
     setCurrentStep(1);

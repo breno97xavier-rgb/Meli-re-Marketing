@@ -9,6 +9,7 @@ import { useScrollSpy } from '../../hooks/useScrollSpy';
 import { useAtmosphere } from '../../context/AtmosphereContext';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { Menu } from 'lucide-react';
+import { trackBriefingCtaClick } from '../../lib/funnelTracking';
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,6 +81,7 @@ export const Header: React.FC = () => {
                 href={ctaConfig.targetAnchor}
                 variant="primary"
                 size="sm"
+                onClick={() => trackBriefingCtaClick('header')}
               >
                 {ctaConfig.label}
               </Button>

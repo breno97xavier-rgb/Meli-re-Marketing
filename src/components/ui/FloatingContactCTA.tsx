@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAtmosphere } from '../../context/AtmosphereContext';
 import { ArrowUpRight } from 'lucide-react';
+import { trackBriefingCtaClick } from '../../lib/funnelTracking';
 
 export const FloatingContactCTA: React.FC = () => {
   const navigate = useNavigate();
@@ -101,6 +102,7 @@ export const FloatingContactCTA: React.FC = () => {
 
   const handleNavigateBriefing = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    trackBriefingCtaClick('floating_cta');
     navigate('/briefing');
     window.scrollTo({ top: 0, behavior: 'instant' });
   };

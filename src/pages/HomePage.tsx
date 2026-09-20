@@ -11,11 +11,16 @@ import { ManifestoSection } from '../sections/Manifesto/ManifestoSection';
 import { AboutSection } from '../sections/About/AboutSection';
 import { ContactCTASection } from '../sections/ContactCTA/ContactCTASection';
 import { captureUtmParams } from '../lib/utm';
+import { initializeFunnelSession, trackLandingView } from '../lib/funnelTracking';
 
 export const HomePage: React.FC = () => {
   useEffect(() => {
     // Capture and persist UTMs from landing URL if present
     captureUtmParams();
+    // Initialize anonymous funnel session and register landing view
+    initializeFunnelSession()
+      .then(() => trackLandingView())
+      .catch(() => {});
   }, []);
 
   return (

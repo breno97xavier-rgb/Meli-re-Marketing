@@ -3,6 +3,7 @@ import { brandTokens } from '../../config/brand';
 import { navigationItems } from '../../config/navigation';
 import { BrandLogo } from '../ui/BrandLogo';
 import { Mail, MessageCircle, Instagram } from 'lucide-react';
+import { trackWhatsappClick } from '../../lib/funnelTracking';
 
 export const Footer: React.FC = () => {
   return (
@@ -65,6 +66,7 @@ export const Footer: React.FC = () => {
                 href={brandTokens.contact.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsappClick('footer')}
                 className="flex items-center gap-2.5 hover:text-brand-coral transition-colors"
               >
                 <MessageCircle className="w-4 h-4 text-brand-coral shrink-0" />
