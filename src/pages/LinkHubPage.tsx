@@ -14,7 +14,7 @@ export const LinkHubPage: React.FC = () => {
         <img
           src="/meliere-symbol.png"
           alt=""
-          className="w-[min(282vw,2280px)] max-w-none -translate-x-[42%] opacity-[0.15] select-none"
+          className="w-[min(197.4vw,1596px)] max-w-none -translate-x-[42%] opacity-[0.15] select-none"
         />
       </div>
 
