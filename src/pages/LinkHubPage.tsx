@@ -10,11 +10,11 @@ const links = [
 export const LinkHubPage: React.FC = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-brand-dark text-brand-light selection:bg-brand-coral selection:text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-start overflow-hidden">
         <img
           src="/meliere-symbol.png"
           alt=""
-          className="w-[min(94vw,760px)] max-w-none opacity-[0.22] select-none"
+          className="w-[min(282vw,2280px)] max-w-none -translate-x-[42%] opacity-[0.15] select-none"
         />
       </div>
 
