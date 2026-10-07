@@ -306,7 +306,16 @@ export const BriefingPage: React.FC = () => {
     currentStep === 6 ? 100 : Math.round((currentStep / (totalSteps - 1)) * 100);
 
   return (
-    <div className="min-h-screen bg-brand-dark text-brand-light flex flex-col selection:bg-brand-coral selection:text-white font-sans antialiased">
+    <div className="min-h-screen bg-brand-dark text-brand-light flex flex-col selection:bg-brand-coral selection:text-white font-sans antialiased relative overflow-hidden">
+      {/* Melière symbol watermark — same treatment used on the link hub */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden flex items-center z-0" aria-hidden="true">
+        <img
+          src="/meliere-symbol.png"
+          alt=""
+          className="w-[min(197.4vw,1596px)] max-w-none -translate-x-[32%] opacity-[0.15] select-none"
+        />
+      </div>
+
       {/* Background Architectural Grid Lines */}
       <div className="fixed inset-0 pointer-events-none opacity-10" aria-hidden="true">
         <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto h-full border-x border-brand-light/20" />
