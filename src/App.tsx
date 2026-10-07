@@ -20,7 +20,10 @@ const MetaPixelTracker: React.FC = () => {
 };
 
 export default function App() {
-  const isAgencyHost = window.location.hostname.toLowerCase().startsWith('agencia.');
+  const hostname = window.location.hostname.toLowerCase();
+  const isAgencyHost = hostname.startsWith('agencia.');
+  const isVercelPreview = hostname.endsWith('.vercel.app') && hostname !== 'meliere-marketing.vercel.app';
+  const showInstitutionalHome = isAgencyHost || isVercelPreview;
 
   return (
     <BrowserRouter>
@@ -28,11 +31,11 @@ export default function App() {
         <RouteScrollToTop />
         <MetaPixelTracker />
         <Routes>
-          <Route path="/" element={isAgencyHost ? <HomePage /> : <LinkHubPage />} />
+          <Route path="/" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
           <Route path="/site" element={<HomePage />} />
           <Route path="/briefing" element={<BriefingPage />} />
           <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
-          <Route path="*" element={isAgencyHost ? <HomePage /> : <LinkHubPage />} />
+          <Route path="*" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
         </Routes>
       </AtmosphereProvider>
     </BrowserRouter>
