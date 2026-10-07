@@ -133,15 +133,18 @@ export const HomePage: React.FC = () => {
           <img src="/meliere-symbol-coral.png" alt="" aria-hidden="true" className="pointer-events-none absolute -bottom-64 right-[-12rem] w-[760px] opacity-[0.06]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em]">Como trabalhamos</p>
-            <h2 className="mb-16 max-w-4xl text-4xl font-medium tracking-[-0.045em] text-[#EDEEEE] md:mb-24 md:text-7xl">
+            <h2 className="mb-14 max-w-4xl text-4xl font-medium tracking-[-0.045em] text-[#EDEEEE] md:mb-16 md:text-7xl">
               Uma direção.<br />Cada decisão reforça a seguinte.
             </h2>
-            <div className="grid border-t border-[#202628]/35 md:grid-cols-4">
+            <div className="relative grid gap-0 md:grid-cols-4">
+              <div aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-[#202628]/35 md:block" />
               {method.map(([n, title, copy]) => (
-                <div key={n} className="border-b border-[#202628]/35 py-8 md:min-h-[260px] md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0">
-                  <span className="text-xs font-semibold tracking-[0.18em] opacity-60">{n}</span>
-                  <h3 className="mt-12 text-2xl font-medium text-[#EDEEEE]">{title}</h3>
-                  <p className="mt-4 max-w-[240px] text-sm leading-6 opacity-70">{copy}</p>
+                <div key={n} className="relative border-b border-[#202628]/25 py-7 md:min-h-[190px] md:border-b-0 md:px-7 md:first:pl-0 md:last:pr-0">
+                  <div className="relative z-10 flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#202628]/45 bg-[#F15A3C] text-[11px] font-semibold tracking-[0.14em]">{n}</span>
+                  </div>
+                  <h3 className="mt-8 text-2xl font-medium text-[#EDEEEE]">{title}</h3>
+                  <p className="mt-3 max-w-[240px] text-sm leading-6 opacity-70">{copy}</p>
                 </div>
               ))}
             </div>
@@ -158,20 +161,20 @@ export const HomePage: React.FC = () => {
               </div>
               <p className="mt-4 text-xs uppercase tracking-[0.14em] text-white/55">Breno Matos · Fundador</p>
             </div>
-            <div className="max-w-3xl text-[clamp(0.78rem,0.78vw,0.82rem)] font-light leading-[1.6] tracking-[-0.025em] text-white/88">
+            <div className="max-w-3xl text-[clamp(0.82rem,0.82vw,0.86rem)] font-light leading-[1.42] tracking-[-0.025em] text-white/88">
               <p className="text-white">Toda agência nasce para vender um serviço.</p>
-              <p className="mt-6">Eu queria construir uma que começasse por uma ideia.</p>
-              <p className="mt-6">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
-              <div className="my-9 border-y border-white/15 py-7 text-[clamp(1.05rem,1.3vw,1.5rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
+              <p className="mt-4">Eu queria construir uma que começasse por uma ideia.</p>
+              <p className="mt-4">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
+              <div className="my-6 border-y border-white/15 py-6 text-[clamp(1.05rem,1.3vw,1.5rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
                 <p>Muda o site.</p><p>Troca a identidade.</p><p>Publica mais conteúdo.</p>
               </div>
               <p>E, no fim, continua sem entender por que não cresce.</p>
-              <p className="mt-6">Foi justamente dessa inquietação que nasceu a Melière.</p>
-              <p className="mt-6">Melière vem dos nomes Lumière e Méliès, fundadores do audiovisual. Homens com uma criatividade abundante para criar e encantar, marcados pela versatilidade em surpreender.</p>
-              <p className="mt-6">A proposta aqui não é vender posts, anúncios ou identidades visuais separadamente.</p>
-              <p className="mt-6">A proposta é estruturar empresas com criatividade e estratégia, para que cada decisão de comunicação reforce a seguinte.</p>
-              <p className="mt-9 text-[clamp(1.1rem,1.4vw,1.6rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
-              <p className="mt-6">E assim nasceu a nossa agência.</p>
+              <p className="mt-4">Foi justamente dessa inquietação que nasceu a Melière.</p>
+              <p className="mt-4">Melière vem dos nomes Lumière e Méliès, fundadores do audiovisual. Homens com uma criatividade abundante para criar e encantar, marcados pela versatilidade em surpreender.</p>
+              <p className="mt-4">A proposta aqui não é vender posts, anúncios ou identidades visuais separadamente.</p>
+              <p className="mt-4">A proposta é estruturar empresas com criatividade e estratégia, para que cada decisão de comunicação reforce a seguinte.</p>
+              <p className="mt-6 text-[clamp(1.1rem,1.4vw,1.6rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
+              <p className="mt-4">E assim nasceu a nossa agência.</p>
             </div>
           </div>
         </section>
