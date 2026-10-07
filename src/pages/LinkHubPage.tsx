@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Instagram, Mail } from 'lucide-react';
 
 const links = [
-  { label: 'Conheça a Melière', href: '/site', external: false },
+  { label: 'Conheça a Melière', href: 'https://agencia.melieremarketing.com.br', external: true },
   { label: 'Fale com a Melière', href: 'https://wa.me/5541988407253', external: true },
   { label: 'Conte sobre seu projeto', href: '/briefing', external: false },
 ];
