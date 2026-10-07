@@ -41,11 +41,11 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#394245] text-[#EDEEEE] font-sans antialiased selection:bg-[#F15A3C] selection:text-white">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#394245]/90 backdrop-blur-md">
+    <div className="min-h-screen bg-[#202628] text-[#EDEEEE] font-sans antialiased selection:bg-[#F15A3C] selection:text-white">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#202628]/90 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-16">
-          <button onClick={() => scrollTo('inicio')} className="relative z-10" aria-label="Voltar ao início">
-            <img src="/meliere-logo-dark.png" alt="Melière Marketing" className="h-9 w-auto object-contain" />
+          <button onClick={() => scrollTo('inicio')} className="relative z-10 h-12 w-32 overflow-hidden" aria-label="Voltar ao início">
+            <img src="/meliere-logo-dark.png" alt="Melière Marketing" className="absolute left-1/2 top-1/2 h-[155px] w-[155px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" />
           </button>
           <nav className="hidden items-center gap-8 text-[13px] font-medium md:flex">
             <button onClick={() => scrollTo('servicos')} className="transition-opacity hover:opacity-60">Serviços</button>
@@ -58,7 +58,7 @@ export const HomePage: React.FC = () => {
           </button>
         </div>
         {menuOpen && (
-          <nav className="border-t border-white/10 bg-[#394245] px-6 py-8 md:hidden">
+          <nav className="border-t border-white/10 bg-[#202628] px-6 py-8 md:hidden">
             {['servicos', 'metodo', 'sobre', 'contato'].map((id) => (
               <button key={id} onClick={() => scrollTo(id)} className="block w-full border-b border-white/10 py-4 text-left text-lg capitalize">
                 {id === 'metodo' ? 'Como trabalhamos' : id}
@@ -69,7 +69,7 @@ export const HomePage: React.FC = () => {
       </header>
 
       <main>
-        <section id="inicio" className="relative flex min-h-screen items-end overflow-hidden bg-[#394245] px-6 pb-14 pt-32 md:px-10 md:pb-20 lg:px-16">
+        <section id="inicio" className="relative flex min-h-screen items-end overflow-hidden bg-[#202628] px-6 pb-14 pt-32 md:px-10 md:pb-20 lg:px-16">
           <Texture dark />
           <img
             src="/meliere-symbol.png"
@@ -96,30 +96,30 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        <section id="servicos" className="relative overflow-hidden bg-[#EDEEEE] px-6 py-24 text-[#394245] md:px-10 md:py-32 lg:px-16">
+        <section id="servicos" className="relative overflow-hidden bg-[#EDEEEE] px-6 py-16 text-[#202628] md:px-10 md:py-20 lg:px-16">
           <Texture />
           <img src="/meliere-symbol-cream.png" alt="" aria-hidden="true" className="pointer-events-none absolute -left-40 -top-56 w-[600px] opacity-[0.045]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
-            <div className="mb-14 flex items-end justify-between border-b border-[#394245]/20 pb-6 md:mb-20">
+            <div className="mb-10 flex items-end justify-between border-b border-[#202628]/20 pb-5 md:mb-12">
               <div>
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#F15A3C]">O que fazemos</p>
                 <h2 className="text-4xl font-medium tracking-[-0.04em] md:text-6xl">Serviços</h2>
               </div>
-              <span className="hidden text-sm text-[#394245]/55 md:block">04 áreas de atuação</span>
+              <span className="hidden text-sm text-[#202628]/55 md:block">04 áreas de atuação</span>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {services.map((service, index) => (
                 <a
                   key={service.title}
                   href={service.href}
-                  className={`group relative flex min-h-[330px] flex-col justify-between overflow-hidden border border-[#394245]/20 p-7 transition-all duration-500 hover:-translate-y-1 hover:bg-[#394245] hover:text-[#EDEEEE] md:min-h-[390px] md:p-10 ${index === 1 || index === 2 ? 'md:translate-y-8' : ''}`}
+                  className={`group relative flex min-h-[240px] flex-col justify-between overflow-hidden border border-[#202628]/20 p-7 transition-all duration-500 hover:-translate-y-1 hover:bg-[#202628] hover:text-[#EDEEEE] md:min-h-[255px] md:p-8`}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-xs font-semibold tracking-[0.18em] opacity-55">{service.number}</span>
                     <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-medium tracking-[-0.04em] md:text-5xl">{service.title}</h3>
+                    <h3 className="text-3xl font-medium tracking-[-0.04em] md:text-4xl">{service.title}</h3>
                     <p className="mt-4 max-w-sm text-sm leading-6 opacity-65 md:text-base">{service.description}</p>
                   </div>
                 </a>
@@ -128,7 +128,7 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        <section id="metodo" className="relative overflow-hidden bg-[#F15A3C] px-6 py-24 text-[#394245] md:px-10 md:py-32 lg:px-16">
+        <section id="metodo" className="relative overflow-hidden bg-[#F15A3C] px-6 py-24 text-[#202628] md:px-10 md:py-32 lg:px-16">
           <Texture />
           <img src="/meliere-symbol-coral.png" alt="" aria-hidden="true" className="pointer-events-none absolute -bottom-64 right-[-12rem] w-[760px] opacity-[0.06]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
@@ -136,9 +136,9 @@ export const HomePage: React.FC = () => {
             <h2 className="mb-16 max-w-4xl text-4xl font-medium tracking-[-0.045em] md:mb-24 md:text-7xl">
               Uma direção.<br />Cada decisão reforça a seguinte.
             </h2>
-            <div className="grid border-t border-[#394245]/35 md:grid-cols-4">
+            <div className="grid border-t border-[#202628]/35 md:grid-cols-4">
               {method.map(([n, title, copy]) => (
-                <div key={n} className="border-b border-[#394245]/35 py-8 md:min-h-[260px] md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0">
+                <div key={n} className="border-b border-[#202628]/35 py-8 md:min-h-[260px] md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0">
                   <span className="text-xs font-semibold tracking-[0.18em] opacity-60">{n}</span>
                   <h3 className="mt-12 text-2xl font-medium">{title}</h3>
                   <p className="mt-4 max-w-[240px] text-sm leading-6 opacity-70">{copy}</p>
@@ -148,9 +148,9 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        <section id="sobre" className="relative overflow-hidden bg-[#394245] px-6 py-24 md:px-10 md:py-32 lg:px-16">
+        <section id="sobre" className="relative overflow-hidden bg-[#202628] px-6 py-20 md:px-10 md:py-24 lg:px-16">
           <Texture dark />
-          <div className="relative z-10 mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+          <div className="relative z-10 mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
             <div className="lg:sticky lg:top-28 lg:self-start">
               <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[#F15A3C]">Sobre a Melière</p>
               <div className="relative overflow-hidden">
@@ -158,25 +158,25 @@ export const HomePage: React.FC = () => {
               </div>
               <p className="mt-4 text-xs uppercase tracking-[0.14em] text-white/55">Breno Matos · Fundador</p>
             </div>
-            <div className="max-w-3xl text-[clamp(1.35rem,2.4vw,2.35rem)] font-light leading-[1.42] tracking-[-0.025em] text-white/88">
+            <div className="max-w-3xl text-[clamp(1.1rem,1.55vw,1.55rem)] font-light leading-[1.5] tracking-[-0.025em] text-white/88">
               <p className="text-white">Toda agência nasce para vender um serviço.</p>
-              <p className="mt-10">Eu queria construir uma que começasse por uma ideia.</p>
-              <p className="mt-10">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
-              <div className="my-14 border-y border-white/15 py-10 text-[clamp(2rem,4vw,4.6rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
+              <p className="mt-6">Eu queria construir uma que começasse por uma ideia.</p>
+              <p className="mt-6">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
+              <div className="my-9 border-y border-white/15 py-7 text-[clamp(1.7rem,2.6vw,3rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
                 <p>Muda o site.</p><p>Troca a identidade.</p><p>Publica mais conteúdo.</p>
               </div>
               <p>E, no fim, continua sem entender por que não cresce.</p>
-              <p className="mt-10">Foi justamente dessa inquietação que nasceu a Melière.</p>
-              <p className="mt-10">Melière vem dos nomes Lumière e Méliès, fundadores do audiovisual. Homens com uma criatividade abundante para criar e encantar, marcados pela versatilidade em surpreender.</p>
-              <p className="mt-10">A proposta aqui não é vender posts, anúncios ou identidades visuais separadamente.</p>
-              <p className="mt-10">A proposta é estruturar empresas com criatividade e estratégia, para que cada decisão de comunicação reforce a seguinte.</p>
-              <p className="mt-14 text-[clamp(2rem,4vw,4.4rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
-              <p className="mt-10">E assim nasceu a nossa agência.</p>
+              <p className="mt-6">Foi justamente dessa inquietação que nasceu a Melière.</p>
+              <p className="mt-6">Melière vem dos nomes Lumière e Méliès, fundadores do audiovisual. Homens com uma criatividade abundante para criar e encantar, marcados pela versatilidade em surpreender.</p>
+              <p className="mt-6">A proposta aqui não é vender posts, anúncios ou identidades visuais separadamente.</p>
+              <p className="mt-6">A proposta é estruturar empresas com criatividade e estratégia, para que cada decisão de comunicação reforce a seguinte.</p>
+              <p className="mt-9 text-[clamp(1.8rem,2.8vw,3.2rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
+              <p className="mt-6">E assim nasceu a nossa agência.</p>
             </div>
           </div>
         </section>
 
-        <section id="contato" className="relative overflow-hidden bg-[#EDEEEE] px-6 py-24 text-[#394245] md:px-10 md:py-32 lg:px-16">
+        <section id="contato" className="relative overflow-hidden bg-[#EDEEEE] px-6 py-24 text-[#202628] md:px-10 md:py-32 lg:px-16">
           <Texture />
           <div className="relative z-10 mx-auto max-w-[1440px]">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-[#F15A3C]">Contato</p>
@@ -185,7 +185,7 @@ export const HomePage: React.FC = () => {
               <a href="/briefing" className="flex min-h-16 items-center justify-between gap-8 bg-[#F15A3C] px-6 text-sm font-semibold transition-transform hover:-translate-y-1 sm:min-w-[280px]">
                 Conte sobre seu projeto <ArrowUpRight size={18} />
               </a>
-              <a href="https://wa.me/5541988407253" target="_blank" rel="noreferrer" className="flex min-h-16 items-center justify-between gap-8 border border-[#394245]/30 px-6 text-sm font-semibold transition-colors hover:bg-[#394245] hover:text-[#EDEEEE] sm:min-w-[280px]">
+              <a href="https://wa.me/5541988407253" target="_blank" rel="noreferrer" className="flex min-h-16 items-center justify-between gap-8 border border-[#202628]/30 px-6 text-sm font-semibold transition-colors hover:bg-[#202628] hover:text-[#EDEEEE] sm:min-w-[280px]">
                 Fale com a Melière <ArrowUpRight size={18} />
               </a>
             </div>
@@ -193,7 +193,7 @@ export const HomePage: React.FC = () => {
         </section>
       </main>
 
-      <footer className="relative overflow-hidden bg-[#394245] px-6 py-12 md:px-10 lg:px-16">
+      <footer className="relative overflow-hidden bg-[#202628] px-6 py-12 md:px-10 lg:px-16">
         <Texture dark />
         <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <img src="/meliere-logo-dark.png" alt="Melière Marketing" className="h-10 w-auto self-start object-contain" />
