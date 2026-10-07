@@ -75,7 +75,7 @@ export const HomePage: React.FC = () => {
             src="/meliere-symbol.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -right-[20vw] top-1/2 w-[95vw] max-w-[1450px] -translate-y-1/2 opacity-[0.10] select-none"
+            className="pointer-events-none absolute -right-[15vw] top-1/2 w-[71.25vw] max-w-[1088px] -translate-y-1/2 opacity-[0.10] select-none"
           />
           <div className="relative z-10 mx-auto grid w-full max-w-[1440px] gap-12 lg:grid-cols-[1.35fr_.65fr] lg:items-end">
             <div>
@@ -98,7 +98,7 @@ export const HomePage: React.FC = () => {
 
         <section id="servicos" className="relative overflow-hidden bg-[#EDEEEE] px-6 py-16 text-[#202628] md:px-10 md:py-20 lg:px-16">
           <Texture />
-          <img src="/meliere-symbol-cream.png" alt="" aria-hidden="true" className="pointer-events-none absolute -left-40 -top-56 w-[600px] opacity-[0.045]" />
+          <img src="/meliere-symbol-cream.png" alt="" aria-hidden="true" className="pointer-events-none absolute -left-40 -top-[160px] w-[690px] opacity-[0.045]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
             <div className="mb-10 flex items-end justify-between border-b border-[#202628]/20 pb-5 md:mb-12">
               <div>
@@ -133,14 +133,14 @@ export const HomePage: React.FC = () => {
           <img src="/meliere-symbol-coral.png" alt="" aria-hidden="true" className="pointer-events-none absolute -bottom-64 right-[-12rem] w-[760px] opacity-[0.06]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em]">Como trabalhamos</p>
-            <h2 className="mb-16 max-w-4xl text-4xl font-medium tracking-[-0.045em] md:mb-24 md:text-7xl">
+            <h2 className="mb-16 max-w-4xl text-4xl font-medium tracking-[-0.045em] text-[#EDEEEE] md:mb-24 md:text-7xl">
               Uma direção.<br />Cada decisão reforça a seguinte.
             </h2>
             <div className="grid border-t border-[#202628]/35 md:grid-cols-4">
               {method.map(([n, title, copy]) => (
                 <div key={n} className="border-b border-[#202628]/35 py-8 md:min-h-[260px] md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0">
                   <span className="text-xs font-semibold tracking-[0.18em] opacity-60">{n}</span>
-                  <h3 className="mt-12 text-2xl font-medium">{title}</h3>
+                  <h3 className="mt-12 text-2xl font-medium text-[#EDEEEE]">{title}</h3>
                   <p className="mt-4 max-w-[240px] text-sm leading-6 opacity-70">{copy}</p>
                 </div>
               ))}
@@ -158,11 +158,11 @@ export const HomePage: React.FC = () => {
               </div>
               <p className="mt-4 text-xs uppercase tracking-[0.14em] text-white/55">Breno Matos · Fundador</p>
             </div>
-            <div className="max-w-3xl text-[clamp(1.1rem,1.55vw,1.55rem)] font-light leading-[1.5] tracking-[-0.025em] text-white/88">
+            <div className="max-w-3xl text-[clamp(0.78rem,0.78vw,0.82rem)] font-light leading-[1.6] tracking-[-0.025em] text-white/88">
               <p className="text-white">Toda agência nasce para vender um serviço.</p>
               <p className="mt-6">Eu queria construir uma que começasse por uma ideia.</p>
               <p className="mt-6">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
-              <div className="my-9 border-y border-white/15 py-7 text-[clamp(1.7rem,2.6vw,3rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
+              <div className="my-9 border-y border-white/15 py-7 text-[clamp(1.05rem,1.3vw,1.5rem)] font-medium leading-[1.02] tracking-[-0.05em] text-[#F15A3C]">
                 <p>Muda o site.</p><p>Troca a identidade.</p><p>Publica mais conteúdo.</p>
               </div>
               <p>E, no fim, continua sem entender por que não cresce.</p>
@@ -170,7 +170,7 @@ export const HomePage: React.FC = () => {
               <p className="mt-6">Melière vem dos nomes Lumière e Méliès, fundadores do audiovisual. Homens com uma criatividade abundante para criar e encantar, marcados pela versatilidade em surpreender.</p>
               <p className="mt-6">A proposta aqui não é vender posts, anúncios ou identidades visuais separadamente.</p>
               <p className="mt-6">A proposta é estruturar empresas com criatividade e estratégia, para que cada decisão de comunicação reforce a seguinte.</p>
-              <p className="mt-9 text-[clamp(1.8rem,2.8vw,3.2rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
+              <p className="mt-9 text-[clamp(1.1rem,1.4vw,1.6rem)] font-medium leading-[1.02] tracking-[-0.05em] text-white">Porque negócios crescem quando existe direção.</p>
               <p className="mt-6">E assim nasceu a nossa agência.</p>
             </div>
           </div>
@@ -196,7 +196,7 @@ export const HomePage: React.FC = () => {
       <footer className="relative overflow-hidden bg-[#202628] px-6 py-12 md:px-10 lg:px-16">
         <Texture dark />
         <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col gap-10 md:flex-row md:items-end md:justify-between">
-          <img src="/meliere-logo-dark.png" alt="Melière Marketing" className="h-10 w-auto self-start object-contain" />
+          <div className="relative h-12 w-32 shrink-0 self-start overflow-hidden"><img src="/meliere-logo-dark.png" alt="Melière Marketing" className="absolute left-1/2 top-1/2 h-[155px] w-[155px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" /></div>
           <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs text-white/65">
             <a href="https://www.instagram.com/meliere.marketing/" target="_blank" rel="noreferrer" className="hover:text-white">Instagram</a>
             <a href="mailto:agenciameliere@gmail.com" className="hover:text-white">agenciameliere@gmail.com</a>
