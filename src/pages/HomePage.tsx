@@ -128,22 +128,22 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        <section id="metodo" className="relative overflow-hidden bg-[#F15A3C] px-6 py-24 text-[#202628] md:px-10 md:py-32 lg:px-16">
+        <section id="metodo" className="relative overflow-hidden border-t border-[#F15A3C]/25 bg-[#EDEEEE] px-6 py-24 text-[#202628] md:px-10 md:py-32 lg:px-16">
           <Texture />
-          <img src="/meliere-symbol-coral.png" alt="" aria-hidden="true" className="pointer-events-none absolute -bottom-64 right-[-12rem] w-[760px] opacity-[0.06]" />
+          <img src="/meliere-symbol-cream.png" alt="" aria-hidden="true" className="pointer-events-none absolute -bottom-64 right-[-12rem] w-[760px] opacity-[0.06]" />
           <div className="relative z-10 mx-auto max-w-[1440px]">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em]">Como trabalhamos</p>
-            <h2 className="mb-14 max-w-4xl text-4xl font-medium tracking-[-0.045em] text-[#EDEEEE] md:mb-16 md:text-7xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#F15A3C]">Como trabalhamos</p>
+            <h2 className="mb-14 max-w-4xl text-4xl font-medium tracking-[-0.045em] text-[#202628] md:mb-16 md:text-7xl">
               Uma direção.<br />Cada decisão reforça a seguinte.
             </h2>
             <div className="relative grid gap-0 md:grid-cols-4">
-              <div aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-[#202628]/35 md:block" />
+              <div aria-hidden="true" className="absolute left-0 right-0 top-[19px] hidden h-px bg-[#F15A3C]/45 md:block" />
               {method.map(([n, title, copy]) => (
-                <div key={n} className="relative border-b border-[#202628]/25 py-7 md:min-h-[190px] md:border-b-0 md:px-7 md:first:pl-0 md:last:pr-0">
+                <div key={n} className="relative border-b border-[#F15A3C]/25 py-7 md:min-h-[190px] md:border-b-0 md:px-7 md:first:pl-0 md:last:pr-0">
                   <div className="relative z-10 flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#202628]/45 bg-[#F15A3C] text-[11px] font-semibold tracking-[0.14em]">{n}</span>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#F15A3C]/55 bg-[#EDEEEE] text-[11px] text-[#F15A3C] font-semibold tracking-[0.14em]">{n}</span>
                   </div>
-                  <h3 className="mt-8 text-2xl font-medium text-[#EDEEEE]">{title}</h3>
+                  <h3 className="mt-8 text-2xl font-medium text-[#202628]">{title}</h3>
                   <p className="mt-3 max-w-[240px] text-sm leading-6 opacity-70">{copy}</p>
                 </div>
               ))}
@@ -161,7 +161,7 @@ export const HomePage: React.FC = () => {
               </div>
               <p className="mt-4 text-xs uppercase tracking-[0.14em] text-white/55">Breno Matos · Fundador</p>
             </div>
-            <div className="max-w-3xl text-[clamp(0.82rem,0.82vw,0.86rem)] font-light leading-[1.42] tracking-[-0.025em] text-white/88">
+            <div className="max-w-3xl text-[clamp(0.82rem,0.82vw,0.86rem)] lg:pt-[10%] font-light leading-[1.42] tracking-[-0.025em] text-white/88">
               <p className="text-white">Toda agência nasce para vender um serviço.</p>
               <p className="mt-4">Eu queria construir uma que começasse por uma ideia.</p>
               <p className="mt-4">A ideia de que marketing não deveria ser uma coleção de ferramentas desconectadas. Uma empresa faz uma logo. Depois cria um Instagram. Então investe em anúncios.</p>
