@@ -109,20 +109,19 @@ export const HomePage: React.FC = () => {
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {services.map((service, index) => (
-                <a
+                <div
                   key={service.title}
-                  href={service.href}
-                  className={`group relative flex min-h-[240px] flex-col justify-between overflow-hidden border border-[#202628]/20 p-7 transition-all duration-500 hover:-translate-y-1 hover:bg-[#202628] hover:text-[#EDEEEE] md:min-h-[255px] md:p-8`}
+                  className={`relative flex min-h-[240px] flex-col justify-between overflow-hidden border border-[#202628]/20 p-7 md:min-h-[255px] md:p-8`}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-xs font-semibold tracking-[0.18em] opacity-55">{service.number}</span>
-                    <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+
                   </div>
                   <div>
                     <h3 className="text-3xl font-medium tracking-[-0.04em] md:text-4xl">{service.title}</h3>
                     <p className="mt-4 max-w-sm text-sm leading-6 opacity-65 md:text-base">{service.description}</p>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </div>
