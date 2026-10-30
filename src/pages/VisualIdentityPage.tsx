@@ -10,9 +10,9 @@ const projects = [
     { file: 'sue-identidade.webp', title: 'Suê Elizabeth · Identidade', alt: 'Logotipo e símbolo de Suê Elizabeth aplicados sobre fundo azul.', width: 1080, height: 1350 },
     { file: 'sue-cartao.webp', title: 'Suê Elizabeth · Cartão de visitas', alt: 'Mockup dos cartões de visitas de Suê Elizabeth nas cores azul, marrom e bege.', width: 1080, height: 1350 },
   ] },
-  { name: 'Melière Marketing', description: 'Criação da identidade visual da agência e aplicação em material comercial.', images: [
-    { file: 'meliere-identidade.webp', title: 'Melière Marketing · Identidade', alt: 'Símbolo da Melière Marketing em coral e preto.', width: 1800, height: 1800 },
-    { file: 'meliere-proposta.webp', title: 'Melière Marketing · Material comercial', alt: 'Composição da identidade da Melière em material comercial, com logotipo e padrão gráfico.', width: 1800, height: 1248 },
+  { name: 'Edital Concursos', description: 'Criação de logotipo, identidade visual e capas de materiais de estudo. Projeto próprio.', images: [
+    { file: 'edital-identidade.webp', title: 'Edital Concursos · Identidade', alt: 'Logotipo Edital Concursos com símbolo de livros em amarelo e lettering branco sobre fundo azul escuro.', width: 1800, height: 1800 },
+    { file: 'edital-capa.webp', title: 'Edital Concursos · Capa de material', alt: 'Capa de material de estudo para agente administrativo da PRF, com a identidade da Edital Concursos em azul e amarelo.', width: 1128, height: 1800 },
   ] },
   { name: 'Mansuè Café & Bistrô', description: 'Definição de cores, tipografia e materiais de comunicação a partir do logotipo existente.', images: [
     { file: 'mansue-identidade.webp', title: 'Mansuè · Identidade', alt: 'Logotipo existente do Mansuè aplicado sobre a textura clara da identidade visual.', width: 922, height: 922 },
@@ -73,18 +73,18 @@ export const VisualIdentityPage: React.FC = () => {
         </section>
 
         <section aria-label="Projetos de identidade visual" className="px-6 py-10 md:px-10 md:py-12 lg:px-16">
-          <div className="mx-auto max-w-[1312px] space-y-10 md:space-y-12">
+          <div className="mx-auto grid max-w-[1312px] gap-x-8 gap-y-8 lg:grid-cols-2 lg:gap-x-10">
             {projects.map((project, index) => (
               <article key={project.name} aria-labelledby={`project-${index}`}>
-                <div className="mb-5 flex flex-col gap-3 border-b border-[#202628]/20 pb-4 md:flex-row md:items-end md:justify-between md:gap-10">
-                  <h2 id={`project-${index}`} className="text-xl font-medium tracking-[-0.035em] md:text-2xl">{project.name}</h2>
-                  <p className="max-w-xl text-xs leading-6 text-[#202628]/65 md:text-right md:text-sm">{project.description}</p>
+                <div className="mb-4 border-b border-[#202628]/20 pb-3 lg:min-h-[100px]">
+                  <h2 id={`project-${index}`} className="text-xl font-medium tracking-[-0.035em]">{project.name}</h2>
+                  <p className="mt-2 max-w-xl text-xs leading-5 text-[#202628]/65">{project.description}</p>
                 </div>
-                <div className="grid gap-5 md:grid-cols-2 lg:gap-8">
+                <div className="grid grid-cols-2 gap-3 md:gap-4">
                   {project.images.map(item => (
                     <figure key={item.file}>
-                      <button type="button" onClick={() => setSelected(item)} aria-label={`Ampliar: ${item.title}`} className="group relative flex h-[320px] w-full items-center justify-center overflow-hidden border border-[#202628]/15 bg-[#E3E5E4] p-4 transition-colors hover:bg-[#DADDDC] sm:h-[380px] lg:h-[420px]">
-                        <img src={assetPath + item.file} alt={item.alt} width={item.width} height={item.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" className="block h-full w-full object-contain" />
+                      <button type="button" onClick={() => setSelected(item)} aria-label={`Ampliar: ${item.title}`} className="group relative flex h-[210px] w-full items-center justify-center overflow-hidden border border-[#202628]/15 bg-[#E3E5E4] p-2 transition-colors hover:bg-[#DADDDC] sm:h-[270px] lg:h-[260px] xl:h-[280px]">
+                        <img src={assetPath + item.file} alt={item.alt} width={item.width} height={item.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" className="block h-full w-full object-contain" />
                         <span aria-hidden="true" className="absolute bottom-3 right-3 rounded-full bg-[#202628]/85 p-2 text-white"><ZoomIn size={15} /></span>
                       </button>
                       <figcaption className="mt-3 text-xs text-[#202628]/65">{item.title.split(' · ')[1]}</figcaption>
