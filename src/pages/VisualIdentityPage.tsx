@@ -66,7 +66,7 @@ export const VisualIdentityPage: React.FC = () => {
               <h1 className="text-[clamp(2.8rem,6.2vw,6.3rem)] font-medium leading-[0.98] tracking-[-0.06em]">Identidade Visual</h1>
             </div>
             <div className="max-w-xl">
-              <p className="text-base leading-7 text-white/85 md:text-lg md:leading-8">Criação de logotipo, definição de cores, tipografia e elementos gráficos. Aplicação da identidade em materiais impressos e digitais.</p>
+              <p className="text-base leading-7 text-white/85 md:text-lg md:leading-8">Branding: definição de posicionamento, personalidade e tom de voz. Criação de logotipo, cores, tipografia e elementos gráficos, com aplicações em materiais impressos e digitais.</p>
               
             </div>
           </div>

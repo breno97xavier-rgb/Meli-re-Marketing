@@ -4,6 +4,7 @@ import { AtmosphereProvider } from './context/AtmosphereContext';
 import { HomePage } from './pages/HomePage';
 import { SocialMediaPage } from './pages/SocialMediaPage';
 import { VisualIdentityPage } from './pages/VisualIdentityPage';
+import { PaidMediaPage } from './pages/PaidMediaPage';
 import { BriefingPage } from './pages/BriefingPage';
 import { LinkHubPage } from './pages/LinkHubPage';
 import { PrivacyPage } from './pages/PrivacyPage';
@@ -35,6 +36,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
           <Route path="/site" element={<HomePage />} />
+          <Route path="/trafego-pago" element={<PaidMediaPage />} />
           <Route path="/identidade-visual" element={<VisualIdentityPage />} />
           <Route path="/social-media" element={<SocialMediaPage />} />
           <Route path="/briefing" element={<BriefingPage />} />

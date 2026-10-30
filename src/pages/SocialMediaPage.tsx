@@ -60,7 +60,7 @@ export const SocialMediaPage: React.FC = () => {
             </div>
             <div className="max-w-xl">
               <p className="text-base leading-7 text-white/85 md:text-lg md:leading-8">Estratégia, planejamento editorial, direção de conteúdo, design, copywriting e gerenciamento de redes sociais.</p>
-              <p className="mt-4 text-xs leading-6 text-white/55">Captação e edição de fotos e vídeos são contratadas separadamente no serviço de Produção Audiovisual.</p>
+              <p className="mt-4 text-xs leading-6 text-white/55">Captação e edição de fotos e vídeos conforme o escopo contratado.</p>
             </div>
           </div>
         </section>

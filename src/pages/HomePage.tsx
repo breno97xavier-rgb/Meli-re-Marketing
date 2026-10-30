@@ -5,11 +5,9 @@ import { initializeFunnelSession, trackLandingView } from '../lib/funnelTracking
 
 const services = [
   { number: '01', title: 'Social Media', description: 'Estratégia, conteúdo e gestão de redes sociais.', href: '/social-media' },
-  { number: '02', title: 'Identidade Visual', description: 'Logotipo, cores, tipografia e aplicações da marca.', href: '/identidade-visual' },
-  { number: '03', title: 'Branding', description: 'Posicionamento, personalidade e comunicação de marca.' },
-  { number: '04', title: 'Produção Audiovisual', description: 'Captação e edição de fotos e vídeos.' },
-  { number: '05', title: 'Tráfego Pago', description: 'Planejamento, gestão e otimização de campanhas.' },
-  { number: '06', title: 'Sites', description: 'Sites institucionais, landing pages e portfólios.' },
+  { number: '02', title: 'Identidade Visual', description: 'Branding, logotipo, cores, tipografia e aplicações da marca.', href: '/identidade-visual' },
+  { number: '03', title: 'Tráfego Pago', description: 'Criação de anúncios, gestão e otimização de campanhas.', href: '/trafego-pago' },
+  { number: '04', title: 'Sites', description: 'Sites institucionais, landing pages e portfólios.' },
 ];
 
 const method = [
@@ -89,7 +87,7 @@ export const HomePage: React.FC = () => {
             <div className="max-w-md lg:pb-2">
               <p className="text-xl leading-relaxed md:text-2xl">Agência de marketing e comunicação em Curitiba.</p>
               <p className="mt-8 border-t border-white/20 pt-5 text-sm leading-7 text-white/70">
-                Social Media · Identidade Visual · Branding · Produção Audiovisual · Tráfego Pago · Sites
+                Social Media · Identidade Visual · Tráfego Pago · Sites
               </p>
               <button onClick={() => scrollTo('servicos')} className="mt-10 flex items-center gap-3 text-sm font-semibold">
                 Conheça a Melière <ArrowDownRight size={18} />
@@ -107,9 +105,9 @@ export const HomePage: React.FC = () => {
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#F15A3C]">O que fazemos</p>
                 <h2 className="text-4xl font-medium tracking-[-0.04em] md:text-6xl">Serviços</h2>
               </div>
-              <span className="hidden text-sm text-[#202628]/55 md:block">06 áreas de atuação</span>
+              <span className="hidden text-sm text-[#202628]/55 md:block">04 áreas de atuação</span>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2">
               {services.map((service) => (
                 <article
                   key={service.title}
