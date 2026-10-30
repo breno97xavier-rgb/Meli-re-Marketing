@@ -5,7 +5,7 @@ import { initializeFunnelSession, trackLandingView } from '../lib/funnelTracking
 
 const services = [
   { number: '01', title: 'Social Media', description: 'Estratégia, conteúdo e gestão de redes sociais.', href: '/social-media' },
-  { number: '02', title: 'Identidade Visual', description: 'Logotipo, cores, tipografia e aplicações da marca.' },
+  { number: '02', title: 'Identidade Visual', description: 'Logotipo, cores, tipografia e aplicações da marca.', href: '/identidade-visual' },
   { number: '03', title: 'Branding', description: 'Posicionamento, personalidade e comunicação de marca.' },
   { number: '04', title: 'Produção Audiovisual', description: 'Captação e edição de fotos e vídeos.' },
   { number: '05', title: 'Tráfego Pago', description: 'Planejamento, gestão e otimização de campanhas.' },
