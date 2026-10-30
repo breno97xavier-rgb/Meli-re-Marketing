@@ -11,13 +11,6 @@ export const PaidMediaPage: React.FC = () => {
     return () => { document.title = previousTitle; };
   }, []);
 
-  const pauseOtherVideos = (event: React.SyntheticEvent<HTMLVideoElement>) => {
-    const current = event.currentTarget;
-    current.closest('section')?.querySelectorAll('video').forEach(video => {
-      if (video !== current) video.pause();
-    });
-  };
-
   const whatsapp = 'https://wa.me/5541988407253?text=' + encodeURIComponent('Olá! Conheci o trabalho de Tráfego Pago da Melière e gostaria de saber mais.');
 
   return (
@@ -49,7 +42,7 @@ export const PaidMediaPage: React.FC = () => {
         <section aria-label="Vídeos produzidos para anúncios" className="px-6 py-8 md:px-10 md:py-10 lg:px-16">
           <div className="mx-auto grid max-w-[880px] justify-items-center gap-5 sm:grid-cols-3 md:gap-8">
             {['01', '02', '03'].map(number => (
-              <video key={number} controls playsInline preload="none" poster={`/portfolio/trafego-pago/anuncio-${number}.jpg`} aria-label={`Reproduzir anúncio ${number}`} onPlay={pauseOtherVideos} className="aspect-[9/16] w-full max-w-[250px] border border-[#202628]/20 bg-[#202628] object-contain">
+              <video key={number} controls autoPlay muted loop playsInline preload="auto" poster={`/portfolio/trafego-pago/anuncio-${number}.jpg`} aria-label={`Reproduzir anúncio ${number}`} className="aspect-[9/16] w-full max-w-[250px] border border-[#202628]/20 bg-[#202628] object-contain">
                 <source src={`/portfolio/trafego-pago/anuncio-${number}.mp4`} type="video/mp4" />
                 Seu navegador não suporta vídeos. <a href={`/portfolio/trafego-pago/anuncio-${number}.mp4`}>Abrir vídeo</a>
               </video>
