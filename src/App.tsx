@@ -9,6 +9,7 @@ import { SitesPage } from './pages/SitesPage';
 import { BriefingPage } from './pages/BriefingPage';
 import { LinkHubPage } from './pages/LinkHubPage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { PageSeo } from './components/PageSeo';
 import { initMetaPixel, trackMetaPageView } from './lib/metaPixel';
 
 const RouteScrollToTop: React.FC = () => {
@@ -33,6 +34,7 @@ export default function App() {
     <BrowserRouter>
       <AtmosphereProvider>
         <RouteScrollToTop />
+        <PageSeo />
         <MetaPixelTracker />
         <Routes>
           <Route path="/" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
@@ -43,7 +45,7 @@ export default function App() {
           <Route path="/social-media" element={<SocialMediaPage />} />
           <Route path="/briefing" element={<BriefingPage />} />
           <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
-          <Route path="*" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
+          <Route path="*" element={<main className="min-h-screen bg-brand-dark p-10 text-brand-light"><h1 className="text-3xl">Página não encontrada</h1><a className="mt-6 inline-block text-brand-coral" href="/site">Voltar ao site</a></main>} />
         </Routes>
       </AtmosphereProvider>
     </BrowserRouter>

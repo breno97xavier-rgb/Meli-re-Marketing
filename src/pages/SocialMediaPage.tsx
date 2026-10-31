@@ -23,9 +23,6 @@ export const SocialMediaPage: React.FC = () => {
 
   useEffect(() => {
     captureUtmParams();
-    const previousTitle = document.title;
-    document.title = 'Social Media | Melière Marketing';
-    return () => { document.title = previousTitle; };
   }, []);
 
   useEffect(() => {

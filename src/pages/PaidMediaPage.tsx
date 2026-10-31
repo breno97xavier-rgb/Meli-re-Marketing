@@ -6,9 +6,6 @@ import { captureUtmParams } from '../lib/utm';
 export const PaidMediaPage: React.FC = () => {
   useEffect(() => {
     captureUtmParams();
-    const previousTitle = document.title;
-    document.title = 'Tráfego Pago | Melière Marketing';
-    return () => { document.title = previousTitle; };
   }, []);
 
   const whatsapp = 'https://wa.me/5541988407253?text=' + encodeURIComponent('Olá! Conheci o trabalho de Tráfego Pago da Melière e gostaria de saber mais.');
