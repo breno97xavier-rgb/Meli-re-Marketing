@@ -7,7 +7,7 @@ const services = [
   { number: '01', title: 'Social Media', description: 'Estratégia, conteúdo e gestão de redes sociais.', href: '/social-media' },
   { number: '02', title: 'Identidade Visual', description: 'Branding, logotipo, cores, tipografia e aplicações da marca.', href: '/identidade-visual' },
   { number: '03', title: 'Tráfego Pago', description: 'Criação de anúncios, gestão e otimização de campanhas.', href: '/trafego-pago' },
-  { number: '04', title: 'Sites', description: 'Sites institucionais, landing pages e portfólios.' },
+  { number: '04', title: 'Sites', description: 'Sites institucionais, landing pages e portfólios.', href: '/sites' },
 ];
 
 const method = [
