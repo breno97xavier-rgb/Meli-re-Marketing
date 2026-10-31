@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AtmosphereProvider } from './context/AtmosphereContext';
 import { HomePage } from './pages/HomePage';
+import { SocialMediaPage } from './pages/SocialMediaPage';
+import { VisualIdentityPage } from './pages/VisualIdentityPage';
+import { PaidMediaPage } from './pages/PaidMediaPage';
+import { SitesPage } from './pages/SitesPage';
 import { BriefingPage } from './pages/BriefingPage';
 import { LinkHubPage } from './pages/LinkHubPage';
 import { PrivacyPage } from './pages/PrivacyPage';
@@ -33,6 +37,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
           <Route path="/site" element={<HomePage />} />
+          <Route path="/sites" element={<SitesPage />} />
+          <Route path="/trafego-pago" element={<PaidMediaPage />} />
+          <Route path="/identidade-visual" element={<VisualIdentityPage />} />
+          <Route path="/social-media" element={<SocialMediaPage />} />
           <Route path="/briefing" element={<BriefingPage />} />
           <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
           <Route path="*" element={showInstitutionalHome ? <HomePage /> : <LinkHubPage />} />
