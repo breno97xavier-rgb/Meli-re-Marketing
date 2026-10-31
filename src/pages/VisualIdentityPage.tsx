@@ -30,9 +30,6 @@ export const VisualIdentityPage: React.FC = () => {
 
   useEffect(() => {
     captureUtmParams();
-    const previousTitle = document.title;
-    document.title = 'Identidade Visual | Melière Marketing';
-    return () => { document.title = previousTitle; };
   }, []);
 
   useEffect(() => {

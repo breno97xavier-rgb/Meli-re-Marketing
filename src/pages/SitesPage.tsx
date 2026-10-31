@@ -16,9 +16,6 @@ export const SitesPage: React.FC = () => {
 
   useEffect(() => {
     captureUtmParams();
-    const previousTitle = document.title;
-    document.title = 'Sites | Melière Marketing';
-    return () => { document.title = previousTitle; };
   }, []);
 
   useEffect(() => {
